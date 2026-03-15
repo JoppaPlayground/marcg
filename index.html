@@ -141,7 +141,7 @@ section{padding:72px 60px;}
 .about-stat:last-child{border-right:none;}
 .about-stat-num{font-family:'Lora',serif;font-size:28px;font-weight:600;color:var(--ink);line-height:1;letter-spacing:-0.5px;}
 .about-stat-lbl{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--soft);margin-top:5px;}
-.about-aside{position:sticky;top:100px;}
+.about-aside{position:sticky;top:100px;padding-top:172px;}
 .aside-row{padding:14px 0;border-bottom:1px solid var(--rule);}
 .aside-row:first-child{border-top:1px solid var(--rule);}
 .aside-lbl{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
@@ -201,8 +201,8 @@ section{padding:72px 60px;}
 #advisory{background:var(--paper);position:relative;overflow:hidden;padding-bottom:72px;}
 .adv-intro{font-size:16px;line-height:1.75;color:var(--muted);font-weight:300;max-width:560px;margin-bottom:36px;}
 .adv-intro strong{color:var(--ink);font-weight:600;}
-.adv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.adv-card{background:var(--white);border-radius:10px;padding:28px 24px;border:1px solid var(--rule);transition:border-color 0.25s,transform 0.25s,box-shadow 0.25s;position:relative;overflow:hidden;}
+.adv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch;}
+.adv-card{background:var(--white);border-radius:10px;padding:28px 24px;border:1px solid var(--rule);transition:border-color 0.25s,transform 0.25s,box-shadow 0.25s;position:relative;overflow:hidden;display:flex;flex-direction:column;}
 .adv-card-bg{position:absolute;top:0;right:0;width:120px;height:120px;pointer-events:none;opacity:0.5;}
 .adv-card:hover{border-color:rgba(26,107,138,0.3);transform:translateY(-4px);box-shadow:0 16px 40px rgba(26,107,138,0.09);}
 .adv-card.open{border-color:rgba(26,107,138,0.25);background:linear-gradient(145deg,#fff 60%,var(--sky) 100%);}
@@ -222,7 +222,7 @@ section{padding:72px 60px;}
 .adv-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
 .adv-name{font-family:'Lora',serif;font-size:20px;font-weight:600;color:var(--ink);margin-bottom:4px;line-height:1.15;}
 .adv-role{font-size:12px;font-weight:500;color:var(--soft);margin-bottom:12px;letter-spacing:0.3px;}
-.adv-body{font-size:13px;line-height:1.75;color:var(--muted);font-weight:300;}
+.adv-body{font-size:13px;line-height:1.75;color:var(--muted);font-weight:300;flex:1;}
 .adv-footer{margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);display:flex;align-items:center;gap:8px;}
 .adv-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse-glow 2s ease-in-out infinite;}
 .adv-status{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--teal);}
@@ -310,7 +310,7 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
   footer{padding:28px 32px;}
   #hero{padding:0 32px;}
   .about-layout{grid-template-columns:1fr;gap:40px;}
-  .about-aside{position:static;}
+  .about-aside{position:static;padding-top:0;}
   .services{grid-template-columns:1fr 1fr;}
   .adv-grid{grid-template-columns:repeat(3,1fr);gap:16px;}
   .contact-inner{gap:40px;}
@@ -341,7 +341,7 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
   .hs-num{font-size:26px;}
   .hs-label{font-size:9px;}
   .about-layout{grid-template-columns:1fr;gap:36px;align-items:start!important;}
-  .about-aside{position:static;}
+  .about-aside{position:static;padding-top:0;}
   .about-stats{margin-top:24px;padding-top:24px;}
   .work-item{grid-template-columns:1fr;gap:12px;padding:28px 0;}
   .wi-stat{flex-direction:row;flex-wrap:wrap;gap:8px;}
@@ -802,8 +802,8 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
       <h2 class="contact-hed">Something magical<br>is <em>on the horizon.</em></h2>
       <p class="contact-sub">Whether you are a founder who needs a product co-pilot, a company that needs to move faster, or an investor looking for a trusted operator, I want to hear from you.</p>
       <div class="contact-links">
-        <a href="javascript:void(0)" onclick="window.location.href=\'mai\'+\'lto:\'+biz()"  class="clink"><div class="clink-inner"><div class="clink-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="1" y="3" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M1 6l7.5 5L16 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div><div><div class="clink-lbl">Business Email</div><div class="clink-val">marc&#64;joppadigital.com</div></div></div><div class="clink-arr"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>
-        <a href="javascript:void(0)" onclick="window.location.href=\'mai\'+\'lto:\'+personal()"  class="clink"><div class="clink-inner"><div class="clink-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="1" y="3" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M1 6l7.5 5L16 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div><div><div class="clink-lbl">Personal Email</div><div class="clink-val">marcgigliotti&#64;gmail.com</div></div></div><div class="clink-arr"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>
+        <a href="mailto:marc@joppadigital.com"  class="clink"><div class="clink-inner"><div class="clink-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="1" y="3" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M1 6l7.5 5L16 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div><div><div class="clink-lbl">Business Email</div><div class="clink-val">marc&#64;joppadigital.com</div></div></div><div class="clink-arr"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>
+        <a href="mailto:marcgigliotti@gmail.com"  class="clink"><div class="clink-inner"><div class="clink-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="1" y="3" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M1 6l7.5 5L16 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div><div><div class="clink-lbl">Personal Email</div><div class="clink-val">marcgigliotti&#64;gmail.com</div></div></div><div class="clink-arr"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>
         <a href="https://www.linkedin.com/in/marcgigliotti" target="_blank" class="clink"><div class="clink-inner"><div class="clink-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="1" y="1" width="15" height="15" rx="2.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 7.5v5M5 6v-.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M8 12.5v-2a2 2 0 014 0v2M8 7.5v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div><div><div class="clink-lbl">LinkedIn</div><div class="clink-val">linkedin.com/in/marcgigliotti</div></div></div><div class="clink-arr"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>
         <a href="https://www.joppadigital.com" target="_blank" class="clink"><div class="clink-inner"><div class="clink-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="1" y="1" width="15" height="15" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M6 11L11 6M11 6H7.5M11 6V9.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="clink-lbl">Product Consulting</div><div class="clink-val">joppadigital.com</div></div></div><div class="clink-arr"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>
       </div>
@@ -822,7 +822,7 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
             <div style="text-align:right;font-size:11px;color:rgba(255,255,255,0.3);margin-top:4px;"><span id="cf-count">0</span> / 500</div>
           </div>
           <button type="button" class="form-btn" onclick="sendContactForm()">Send Message <svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <p style="margin-top:14px;font-size:12px;color:rgba(255,255,255,0.3);">Or email directly: <a href="javascript:void(0)" onclick="window.location.href='mai'+'lto:'+biz()" style="color:var(--teal-lt);text-decoration:none;" id="directEmail">marc&#64;joppadigital.com</a></p>
+          <p style="margin-top:14px;font-size:12px;color:rgba(255,255,255,0.3);">Or email directly: <a href="mailto:marc@joppadigital.com" style="color:var(--teal-lt);text-decoration:none;" id="directEmail">marc&#64;joppadigital.com</a></p>
         </div>
       </div>
     </div>
@@ -841,8 +841,6 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
 </footer>
 
 <script>
-function biz(){return ['mar','c@joppa','digital','.com'].join('');}
-function personal(){return ['marcgigli','otti@gm','ail.com'].join('');}
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);});
 function openMobileMenu(){document.getElementById('mobileMenu').classList.add('open');}
 function closeMobileMenu(){document.getElementById('mobileMenu').classList.remove('open');}
@@ -858,7 +856,7 @@ function sendContactForm(){
                 + 'Company: ' + (company || '—') + '\n'
                 + 'Email: '   + email   + '\n\n'
                 + message;
-  const mailto = 'mai'+'lto:'+biz()
+  const mailto = 'mailto:marc@joppadigital.com'
                + '?subject=' + encodeURIComponent(subject)
                + '&body='    + encodeURIComponent(body);
   // Try location.href first, fallback to new window
