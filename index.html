@@ -219,31 +219,28 @@ nav.scrolled .nav-hamburger span{background:var(--ink);}
 
 /* SECTIONS */
 section{padding:72px 60px;}
-.sec-label{display:flex;align-items:center;gap:14px;font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-bottom:32px;}
+.sec-label{display:flex;align-items:center;gap:14px;font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-bottom:20px;}
+#about .sec-label{margin-bottom:20px;}
 .sec-label-line{width:24px;height:2px;background:var(--teal);border-radius:2px;flex-shrink:0;}
-.sec-h{font-family:'Lora',serif;font-weight:600;font-size:clamp(30px,3.8vw,52px);line-height:1.1;letter-spacing:-0.5px;color:var(--ink);margin-bottom:40px;}
+.sec-h{font-family:'Lora',serif;font-weight:600;font-size:clamp(30px,3.8vw,52px);line-height:1.1;letter-spacing:-0.5px;color:var(--ink);margin-bottom:32px;}
+#about .sec-h{margin-bottom:24px;}
 .sec-h em{font-style:italic;color:var(--teal);}
 
 
 /* AVATAR */
-.about-avatar{width:148px;height:148px;border-radius:50%;overflow:hidden;background:#F0F7FA;box-shadow:0 4px 24px rgba(26,107,138,0.1);flex-shrink:0;margin-bottom:24px;}
+.about-avatar{width:148px;height:148px;border-radius:50%;overflow:hidden;background:#F0F7FA;box-shadow:0 4px 24px rgba(26,107,138,0.1);flex-shrink:0;margin-bottom:16px;}
 .about-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top;mix-blend-mode:multiply;}
 /* ABOUT */
-#about{background:var(--white);padding-top:32px;padding-bottom:72px;}
-.about-layout{display:grid;grid-template-columns:1.2fr 0.8fr;gap:72px;align-items:start;}
+#about{background:var(--white);padding-top:24px;padding-bottom:40px;}
+.about-layout{display:grid;grid-template-columns:1.2fr 0.8fr;gap:48px;align-items:start;}
 .about-left{display:flex;flex-direction:column;}
-.about-pull{font-family:'Lora',serif;font-style:italic;font-size:clamp(18px,1.8vw,24px);line-height:1.5;color:var(--ink);border-left:3px solid var(--teal);padding-left:18px;margin-bottom:24px;}
-.about-body p{font-size:14px;line-height:1.8;color:var(--muted);font-weight:300;margin-bottom:13px;}
+.about-pull{font-family:'Lora',serif;font-style:italic;font-size:clamp(16px,1.6vw,21px);line-height:1.5;color:var(--ink);border-left:3px solid var(--teal);padding-left:18px;margin-bottom:16px;}
+.about-body p{font-size:14px;line-height:1.75;color:var(--muted);font-weight:300;margin-bottom:10px;}
 .about-body p strong{color:var(--ink);font-weight:600;}
-.skills-wrap{display:flex;flex-wrap:wrap;gap:7px;margin-top:24px;margin-bottom:24px;}
+.skills-wrap{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;margin-bottom:0;}
 .skill{font-size:11px;font-weight:600;letter-spacing:0.3px;color:var(--teal);background:var(--sky);padding:5px 12px;border-radius:100px;transition:background 0.2s;}
 .skill:hover{background:#d2eaf2;}
-.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:32px;padding-top:36px;border-top:1px solid var(--rule);}
-.about-stat{padding:18px 0;border-right:1px solid var(--rule);}
-.about-stat:last-child{border-right:none;}
-.about-stat-num{font-family:'Lora',serif;font-size:28px;font-weight:600;color:var(--ink);line-height:1;letter-spacing:-0.5px;}
-.about-stat-lbl{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--soft);margin-top:5px;}
-.about-aside{position:sticky;top:100px;padding-top:80px;}
+.about-aside{padding-top:0;}
 .aside-row{padding:14px 0;border-bottom:1px solid var(--rule);}
 .aside-row:first-child{border-top:1px solid var(--rule);}
 .aside-lbl{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
@@ -446,7 +443,6 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
   .hs-label{font-size:9px;}
   .about-layout{grid-template-columns:1fr;gap:36px;align-items:start!important;}
   .about-aside{position:static;padding-top:0;}
-  .about-stats{margin-top:24px;padding-top:24px;}
   .wt{grid-template-columns:1fr;gap:14px;}
   .wt-left{border-right:none;padding-right:0;border-bottom:1px solid var(--rule);padding-bottom:14px;}
   .wt-right{padding-left:0;}
@@ -489,7 +485,6 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
   .services{grid-template-columns:1fr;}
   .nautical-divider{padding:28px 16px;}
   .adv-grid{grid-template-columns:1fr;}
-  .about-stats{grid-template-columns:1fr 1fr 1fr;}
   .prod-row{padding:18px 0;}
   footer{padding:20px 16px;}
   .sec-label{margin-bottom:20px;}
@@ -661,11 +656,6 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
         <div class="skills-wrap">
           <span class="skill">Product Strategy</span><span class="skill">0 to 1 Building</span><span class="skill">Growth</span><span class="skill">AI Products</span><span class="skill">Fintech</span><span class="skill">Consumer</span><span class="skill">B2B / B2C</span><span class="skill">Agile / Scrum</span><span class="skill">Personalization</span><span class="skill">Monetization</span><span class="skill">Digital Ops</span><span class="skill">Founder</span><span class="skill">Digital</span><span class="skill">Innovation</span><span class="skill">Creative</span><span class="skill">UX / UI</span><span class="skill">Business Ownership</span><span class="skill">Data &amp; Experimentation</span><span class="skill">Go-to-Market</span><span class="skill">Leadership / Operations</span>
         </div>
-      </div>
-      <div class="about-stats">
-        <div class="about-stat"><div class="about-stat-num">50+</div><div class="about-stat-lbl">Products Built</div></div>
-        <div class="about-stat" style="padding-left:24px;"><div class="about-stat-num">18+</div><div class="about-stat-lbl">Years Operating</div></div>
-        <div class="about-stat" style="padding-left:24px;"><div class="about-stat-num">5</div><div class="about-stat-lbl">Fortune 500s</div></div>
       </div>
     </div>
     <div class="about-aside reveal">
