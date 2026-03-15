@@ -296,6 +296,7 @@ section{padding:72px 60px;}
 
 /* ADVISORY */
 #advisory{background:var(--paper);position:relative;overflow:hidden;padding-bottom:72px;}
+.adv-constellation{width:340px;height:260px;}
 .adv-intro{font-size:16px;line-height:1.75;color:var(--muted);font-weight:300;max-width:560px;margin-bottom:36px;}
 .adv-intro strong{color:var(--ink);font-weight:600;}
 .adv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch;}
@@ -459,7 +460,7 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
   .adv-grid{grid-template-columns:1fr;gap:14px;}
   .adv-card-bg{display:none;}
   /* Constellation: keep but shrink to top-right corner, very faint */
-  .adv-constellation{width:180px!important;height:140px!important;opacity:0.4;}
+  .adv-constellation{width:160px!important;height:130px!important;opacity:0.35!important;}
   /* Band glow: keep but much more subtle */
   .band-sun{opacity:0.3;}
   .band::before{opacity:0.3;}
@@ -666,7 +667,7 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
       </div>
     </div>
     <div class="about-aside reveal">
-      <div class="aside-row"><div class="aside-lbl">Education</div><div class="aside-val">MBA, General Management</div><div class="aside-sub">University of Massachusetts Lowell, 2012</div></div>
+      <div class="aside-row"><div class="aside-lbl">Education</div><div class="aside-val">MBA, General Management</div><div class="aside-sub">Manning School of Business, UMass Lowell &middot; 2009–2012</div><br><div class="aside-val">BS, Business Administration</div><div class="aside-sub">Salve Regina University &middot; 2003–2007</div><div class="aside-sub" style="margin-top:3px;">Minor: Management Information Systems &middot; American Marketing Association &middot; East Bay Special Olympics</div><br><div class="aside-val">High School Diploma</div><div class="aside-sub">Austin Preparatory School &middot; 1999–2003</div></div>
       <div class="aside-row"><div class="aside-lbl">Certifications</div><div class="aside-val">Certified Scrum Product Owner</div><div class="aside-sub">Scrum Alliance</div><br><div class="aside-val">Outcome Driven Innovation</div><div class="aside-sub">Strategyn</div><br><div class="aside-val">Behavioral Economics and Neuromarketing</div><div class="aside-sub">Udemy</div></div>
       <div class="aside-row"><div class="aside-lbl">Recognition</div><div class="aside-val">adidas Group Global IT CIO Innovation Award</div><div class="aside-sub">2012</div><br><div class="aside-val">Fidelity Excellence in Action</div><div class="aside-sub">Q3 2020 and Q2 2021</div><br><div class="aside-val">Reebok Employee Recognition Award</div><div class="aside-sub">Q4 2013</div></div>
       <div class="aside-row"><div class="aside-lbl">Giving Back</div><div class="aside-val">Addy's Army &mdash; ~$50k raised</div><div class="aside-sub">BCH and Dana Farber Cancer Institute</div></div>
@@ -849,7 +850,7 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
 
 <section id="advisory">
   <!-- Subtle top-right decorative visual -->
-  <svg class="adv-constellation" style="position:absolute;top:0;right:0;width:340px;height:260px;pointer-events:none;" viewBox="0 0 340 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg class="adv-constellation" style="position:absolute;top:0;right:0;pointer-events:none;" viewBox="0 0 340 260" fill="none" xmlns="http://www.w3.org/2000/svg">
     <!-- Primary nodes — varied sizes -->
     <circle cx="290" cy="22" r="4"   fill="rgba(26,107,138,0.22)"/>
     <circle cx="320" cy="58" r="2.5" fill="rgba(26,107,138,0.16)"/>
@@ -947,8 +948,8 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
       <h2 class="contact-hed">Something magical<br>is <em>on the horizon.</em></h2>
       <p class="contact-sub">Whether you are a founder who needs a product co-pilot, a company that needs to move faster, or an investor looking for a trusted operator, I want to hear from you.</p>
       <div class="contact-links">
-        <a href="mailto:marc@joppadigital.com" onclick="event.preventDefault();openEmail('marc@joppadigital.com')" class="clink"><div class="clink-inner"><div class="clink-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="1" y="3" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M1 6l7.5 5L16 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div><div><div class="clink-lbl">Business Email</div><div class="clink-val">marc@joppadigital.com</div></div></div><div class="clink-arr"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>
-        <a href="mailto:marcgigliotti@gmail.com" onclick="event.preventDefault();openEmail('marcgigliotti@gmail.com')" class="clink"><div class="clink-inner"><div class="clink-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="1" y="3" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M1 6l7.5 5L16 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div><div><div class="clink-lbl">Personal Email</div><div class="clink-val">marcgigliotti@gmail.com</div></div></div><div class="clink-arr"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>
+        <a href="/cdn-cgi/l/email-protection#dfb2beadbc9fb5b0afafbebbb6b8b6abbeb3f1bcb0b2" onclick="event.preventDefault();openEmail('marc@joppadigital.com')" class="clink"><div class="clink-inner"><div class="clink-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="1" y="3" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M1 6l7.5 5L16 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div><div><div class="clink-lbl">Business Email</div><div class="clink-val"><span class="__cf_email__" data-cfemail="563b372435163c39262637323f313f22373a7835393b">[email&#160;protected]</span></div></div></div><div class="clink-arr"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>
+        <a href="/cdn-cgi/l/email-protection#dbb6baa9b8bcb2bcb7b2b4afafb29bbcb6bab2b7f5b8b4b6" onclick="event.preventDefault();openEmail('marcgigliotti@gmail.com')" class="clink"><div class="clink-inner"><div class="clink-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="1" y="3" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M1 6l7.5 5L16 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div><div><div class="clink-lbl">Personal Email</div><div class="clink-val"><span class="__cf_email__" data-cfemail="8fe2eefdece8e6e8e3e6e0fbfbe6cfe8e2eee6e3a1ece0e2">[email&#160;protected]</span></div></div></div><div class="clink-arr"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>
         <a href="https://www.linkedin.com/in/marcgigliotti" target="_blank" class="clink"><div class="clink-inner"><div class="clink-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="1" y="1" width="15" height="15" rx="2.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 7.5v5M5 6v-.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M8 12.5v-2a2 2 0 014 0v2M8 7.5v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div><div><div class="clink-lbl">LinkedIn</div><div class="clink-val">linkedin.com/in/marcgigliotti</div></div></div><div class="clink-arr"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>
         <a href="https://www.joppadigital.com" target="_blank" class="clink"><div class="clink-inner"><div class="clink-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="1" y="1" width="15" height="15" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M6 11L11 6M11 6H7.5M11 6V9.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="clink-lbl">Product Consulting</div><div class="clink-val">joppadigital.com</div></div></div><div class="clink-arr"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>
       </div>
@@ -967,7 +968,7 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
             <div style="text-align:right;font-size:11px;color:rgba(255,255,255,0.3);margin-top:4px;"><span id="cf-count">0</span> / 500</div>
           </div>
           <button type="button" class="form-btn" onclick="sendContactForm()">Send Message <svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <p style="margin-top:14px;font-size:12px;color:rgba(255,255,255,0.3);">Or email directly: <a href="mailto:marc@joppadigital.com" onclick="event.preventDefault();openEmail('marc@joppadigital.com')" style="color:var(--teal-lt);text-decoration:none;">marc@joppadigital.com</a></p>
+          <p style="margin-top:14px;font-size:12px;color:rgba(255,255,255,0.3);">Or email directly: <a href="/cdn-cgi/l/email-protection#066b677465466c69767667626f616f72676a2865696b" onclick="event.preventDefault();openEmail('marc@joppadigital.com')" style="color:var(--teal-lt);text-decoration:none;"><span class="__cf_email__" data-cfemail="6c010d1e0f2c06031c1c0d08050b05180d00420f0301">[email&#160;protected]</span></a></p>
         </div>
       </div>
     </div>
