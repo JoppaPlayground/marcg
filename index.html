@@ -249,25 +249,22 @@ section{padding:72px 60px;}
 .aside-sub{font-size:12px;color:var(--muted);font-weight:300;line-height:1.5;}
 
 /* WORK */
-#work{background:var(--paper);}
-.work-list{display:flex;flex-direction:column;}
-.work-item{display:grid;grid-template-columns:200px 1fr 180px;gap:36px;padding:32px 0;border-top:1px solid var(--rule);align-items:start;}
-.work-item:last-child{border-bottom:1px solid var(--rule);}
-.wi-co{font-family:'Lora',serif;font-size:18px;font-weight:600;color:var(--ink);margin-bottom:5px;}
-.wi-date{font-size:11px;font-weight:600;letter-spacing:1px;color:var(--soft);text-transform:uppercase;}
-.wi-role{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:11px;line-height:1.35;}
-.wi-body{font-size:14px;line-height:1.8;color:var(--muted);font-weight:300;max-width:520px;}
-.wi-win{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:12px;font-weight:600;color:var(--teal);background:var(--sky);padding:6px 13px;border-radius:4px;}
-.wi-win svg{flex-shrink:0;}
-/* Right stat panel */
-.wi-stat{display:flex;flex-direction:column;gap:16px;padding-top:4px;}
-.wi-stat-item{padding:14px 16px;background:var(--white);border-radius:6px;border-left:3px solid var(--teal);transition:transform 0.2s;}
-.wi-stat-item:hover{transform:translateX(3px);}
-.wi-stat-num{font-family:'Lora',serif;font-size:22px;font-weight:600;color:var(--ink);line-height:1;margin-bottom:3px;}
-.wi-stat-lbl{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--soft);}
-/* Animated counter */
-@keyframes countUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
-.wi-stat-item.visible .wi-stat-num{animation:countUp 0.5s ease forwards;}
+#work{background:var(--paper);padding-bottom:80px;}
+.work-timeline{display:flex;flex-direction:column;margin-top:40px;gap:0;}
+.wt{display:grid;grid-template-columns:220px 1fr;gap:0;padding:28px 0;border-top:1px solid var(--rule);}
+.wt:last-child{border-bottom:1px solid var(--rule);}
+.wt-left{padding-right:36px;border-right:1px solid var(--rule);}
+.wt-co{font-family:'Lora',serif;font-size:17px;font-weight:600;color:var(--ink);margin-bottom:4px;line-height:1.2;}
+.wt-era{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--soft);margin-bottom:16px;}
+.wt-stats{display:flex;flex-direction:column;gap:8px;margin-top:auto;}
+.wts{display:flex;align-items:baseline;gap:6px;}
+.wts-num{font-family:'Lora',serif;font-size:18px;font-weight:600;color:var(--teal);line-height:1;}
+.wts-lbl{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--soft);}
+.wt-right{padding-left:36px;display:flex;flex-direction:column;}
+.wt-role{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.4;text-transform:uppercase;letter-spacing:0.3px;}
+.wt-body{font-size:14px;line-height:1.8;color:var(--muted);font-weight:300;margin-bottom:0;}
+.wt-win{display:inline-flex;align-items:flex-start;gap:7px;margin-top:12px;font-size:12px;font-weight:600;color:var(--teal);line-height:1.5;}
+.wt-win svg{flex-shrink:0;margin-top:2px;}
 
 /* PRODUCTS HEADER VISUAL — simple lighthouse with beam */
 .products-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:0;gap:40px;}
@@ -414,7 +411,7 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
   .services{grid-template-columns:1fr 1fr;}
   .adv-grid{grid-template-columns:repeat(3,1fr);gap:16px;}
   .contact-inner{gap:40px;}
-  .work-item{grid-template-columns:140px 1fr 150px;gap:24px;}
+  .wt{grid-template-columns:180px 1fr;}
   .products-header{flex-direction:column;align-items:flex-start;gap:12px;}
   .products-launch-visual{width:160px;}
   .plv-svg{width:160px;}
@@ -431,8 +428,12 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
   .foot-links{flex-wrap:wrap;justify-content:center;gap:16px;}
   .foot-copy{display:none;}
   #hero{padding:0 20px;max-height:none;height:100svh;min-height:580px;}
-  .hero-visual{width:100%;opacity:0.35;}
-  .hero-fade{width:100%;background:linear-gradient(to bottom,transparent 20%,var(--navy2) 75%);}
+  .hero-content{padding-top:8px!important;}
+  .hero-kicker{font-size:10px;letter-spacing:2px;gap:8px;flex-wrap:nowrap;}
+  .hero-kicker-seasoned{display:none;}
+  /* Compass: shrink and push to bottom-right corner, very faint */
+  .hero-visual{position:absolute!important;width:200px!important;height:200px!important;right:-20px!important;bottom:80px!important;top:auto!important;left:auto!important;opacity:0.08!important;}
+  .hero-fade{display:none;}
   .hero-h1{font-size:clamp(32px,7vw,50px);letter-spacing:-1px;}
   .hero-sub{max-width:100%;font-size:14px;}
   .hero-stats{grid-template-columns:1fr 1fr;}
@@ -443,7 +444,10 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
   .about-layout{grid-template-columns:1fr;gap:36px;align-items:start!important;}
   .about-aside{position:static;padding-top:0;}
   .about-stats{margin-top:24px;padding-top:24px;}
-  .work-item{grid-template-columns:1fr;gap:12px;padding:28px 0;}
+  .wt{grid-template-columns:1fr;gap:14px;}
+  .wt-left{border-right:none;padding-right:0;border-bottom:1px solid var(--rule);padding-bottom:14px;}
+  .wt-right{padding-left:0;}
+  .wt-stats{flex-direction:row;flex-wrap:wrap;gap:12px 20px;}
   .wi-stat{flex-direction:row;flex-wrap:wrap;gap:8px;}
   .wi-stat-item{flex:1;min-width:100px;}
   .wi-stat-item:hover{transform:none;}
@@ -452,7 +456,13 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
   .prod-name{font-size:18px;}
   .services{grid-template-columns:1fr 1fr;}
   .svc:nth-child(odd){border-right:none;}
-  .adv-grid{grid-template-columns:1fr 1fr;gap:14px;}
+  .adv-grid{grid-template-columns:1fr;gap:14px;}
+  .adv-card-bg{display:none;}
+  /* Constellation: keep but shrink to top-right corner, very faint */
+  .adv-constellation{width:180px!important;height:140px!important;opacity:0.4;}
+  /* Band glow: keep but much more subtle */
+  .band-sun{opacity:0.3;}
+  .band::before{opacity:0.3;}
   .contact-inner{grid-template-columns:1fr;gap:32px;}
   .form-row{grid-template-columns:1fr;}
   .products-header{flex-direction:column;align-items:flex-start;gap:12px;}
@@ -468,8 +478,7 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
   .band{padding:44px 16px;}
   nav,nav.scrolled{padding:14px 16px;}
   #hero{padding:0 16px;}
-
-  .hero-h1{font-size:28px;}
+  .hero-h1{font-size:24px;letter-spacing:-0.5px;}
   .hero-ctas{flex-direction:column;align-items:flex-start;gap:10px;}
   .btn-primary,.btn-ghost{width:100%;justify-content:center;}
   .hero-stats{grid-template-columns:1fr 1fr;}
@@ -478,12 +487,9 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
   .nautical-divider{padding:28px 16px;}
   .adv-grid{grid-template-columns:1fr;}
   .about-stats{grid-template-columns:1fr 1fr 1fr;}
-  .wi-stat-item{min-width:80px;}
-  .work-item{padding:20px 0;}
   .prod-row{padding:18px 0;}
   footer{padding:20px 16px;}
   .sec-label{margin-bottom:20px;}
-  .hero-h1{font-size:24px;letter-spacing:-0.5px;}
 }
 </style>
 </head>
@@ -616,7 +622,7 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
   </div>
 
   <div class="hero-content">
-    <div class="hero-kicker"><span class="hero-kicker-line"></span>Product Executive &nbsp;/&nbsp; Founder &nbsp;/&nbsp; Seasoned Builder</div>
+    <div class="hero-kicker"><span class="hero-kicker-line"></span>Product Executive &nbsp;/&nbsp; Founder &nbsp;/&nbsp;<span class="hero-kicker-seasoned"> Seasoned</span> Builder</div>
     <h1 class="hero-h1">I don't build products.<br><span class="accent" style="white-space:nowrap;">I build <em style="font-family:'Lora',serif;font-style:italic;">lasting</em> businesses.</span></h1>
     <p class="hero-sub"><strong>Eighteen years. Five Fortune 500s.</strong> A billion-dollar exit. Fifty-plus products shipped. I navigate the intersection of consumer product, B2B, AI, and growth strategy.</p>
     <div class="hero-ctas">
@@ -671,49 +677,88 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
 <section id="work">
   <div class="sec-label reveal"><span class="sec-label-line"></span>02 &mdash; Companies I've Built For</div>
   <h2 class="sec-h reveal">Where I've <em>Operated</em></h2>
-  <div class="work-list">
-    <div class="work-item reveal">
-      <div><div class="wi-co">MoneyLion / GEN Digital</div><div class="wi-date">2022 &ndash; Present</div></div>
-      <div><div class="wi-role">VP of Product &mdash; Discover, Credit Monitoring, Community, Investing, PFM, B2B Content</div><div class="wi-body">Owned the full consumer product suite. Led Discover, Credit Monitoring, and Community from 0 to 1 while driving Discover to 20x revenue growth. Also built Active Investing and the B2B content feed tool across six product domains simultaneously.</div><div class="wi-win"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 4L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Led consumer product suite to a $1B acquisition by GEN Digital</div></div>
-      <div class="wi-stat">
-        <div class="wi-stat-item"><div class="wi-stat-num">20x</div><div class="wi-stat-lbl">Revenue Growth</div></div>
-        <div class="wi-stat-item"><div class="wi-stat-num">$1B</div><div class="wi-stat-lbl">Exit Value</div></div>
-        <div class="wi-stat-item"><div class="wi-stat-num">6</div><div class="wi-stat-lbl">Product Domains</div></div>
+  <div class="work-timeline">
+
+    <div class="wt reveal">
+      <div class="wt-left">
+        <div class="wt-co">MoneyLion / GEN Digital</div>
+        <div class="wt-era">2022 — Present</div>
+        <div class="wt-stats">
+          <div class="wts"><span class="wts-num">20x</span><span class="wts-lbl">Revenue Growth</span></div>
+          <div class="wts"><span class="wts-num">$1B</span><span class="wts-lbl">Exit Value</span></div>
+          <div class="wts"><span class="wts-num">6</span><span class="wts-lbl">Product Domains</span></div>
+        </div>
+      </div>
+      <div class="wt-right">
+        <div class="wt-role">VP of Product — Discover, Credit Monitoring, Community, Investing, PFM, B2B Content</div>
+        <div class="wt-body">Owned the full consumer product suite. Led Discover, Credit Monitoring, and Community from 0 to 1 while driving Discover to 20x revenue growth. Also built Active Investing and the B2B content feed tool across six product domains simultaneously.</div>
+        <div class="wt-win"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 4L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Led consumer product suite to a $1B acquisition by GEN Digital</div>
       </div>
     </div>
-    <div class="work-item reveal">
-      <div><div class="wi-co">Fidelity Investments</div><div class="wi-date">2018 &ndash; 2022</div></div>
-      <div><div class="wi-role">Director, Product and Strategy &mdash; Digital Advice and E2E Wealth Management</div><div class="wi-body">Product lead for FidelityGo and Fidelity Personalized Planning and Advice, a hybrid robo-advisor managing $7B in AUM. Built the full post-enrollment experience, mobile communications strategy, and wealth management journey maps.</div><div class="wi-win"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 4L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Fidelity Excellence in Action Awards Q3 2020 and Q2 2021</div></div>
-      <div class="wi-stat">
-        <div class="wi-stat-item"><div class="wi-stat-num">$7B</div><div class="wi-stat-lbl">AUM Managed</div></div>
-        <div class="wi-stat-item"><div class="wi-stat-num">2x</div><div class="wi-stat-lbl">Excellence Awards</div></div>
+
+    <div class="wt reveal">
+      <div class="wt-left">
+        <div class="wt-co">Fidelity Investments</div>
+        <div class="wt-era">2018 — 2022</div>
+        <div class="wt-stats">
+          <div class="wts"><span class="wts-num">$7B</span><span class="wts-lbl">AUM Managed</span></div>
+          <div class="wts"><span class="wts-num">2x</span><span class="wts-lbl">Excellence Awards</span></div>
+        </div>
+      </div>
+      <div class="wt-right">
+        <div class="wt-role">Director, Product and Strategy — Digital Advice & E2E Wealth Management</div>
+        <div class="wt-body">Product lead for FidelityGo and Fidelity Personalized Planning and Advice, a hybrid robo-advisor managing $7B in AUM. Built the full post-enrollment experience, mobile communications strategy, and wealth management journey maps.</div>
+        <div class="wt-win"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 4L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Fidelity Excellence in Action Awards Q3 2020 and Q2 2021</div>
       </div>
     </div>
-    <div class="work-item reveal">
-      <div><div class="wi-co">Kaspersky Lab</div><div class="wi-date">2017 &ndash; 2018</div></div>
-      <div><div class="wi-role">Head of Digital Marketing and Product &mdash; North America and Latin America</div><div class="wi-body">Led digital marketing and product across NAM and LATAM for B2B and B2C lines. Designed multi-year regional digital roadmaps, ran paid media programs, SEO, paid search, and social programs, and consistently exceeded regional ROAS and growth targets.</div></div>
-      <div class="wi-stat">
-        <div class="wi-stat-item"><div class="wi-stat-num">2</div><div class="wi-stat-lbl">Regions Led</div></div>
-        <div class="wi-stat-item"><div class="wi-stat-num">B2B+</div><div class="wi-stat-lbl">B2C Growth</div></div>
+
+    <div class="wt reveal">
+      <div class="wt-left">
+        <div class="wt-co">Kaspersky Lab</div>
+        <div class="wt-era">2017 — 2018</div>
+        <div class="wt-stats">
+          <div class="wts"><span class="wts-num">2</span><span class="wts-lbl">Regions Led</span></div>
+          <div class="wts"><span class="wts-num">B2B+</span><span class="wts-lbl">B2C Growth</span></div>
+        </div>
+      </div>
+      <div class="wt-right">
+        <div class="wt-role">Head of Digital Marketing & Product — North America and Latin America</div>
+        <div class="wt-body">Led digital marketing and product across NAM and LATAM for B2B and B2C lines. Designed multi-year regional digital roadmaps, ran paid media, SEO, paid search, and social programs, consistently exceeding regional ROAS and growth targets.</div>
       </div>
     </div>
-    <div class="work-item reveal">
-      <div><div class="wi-co">CVS Health</div><div class="wi-date">2015 &ndash; 2017</div></div>
-      <div><div class="wi-role">Senior Manager, Digital Experience Production and Operations</div><div class="wi-body">Built and led a team of digital producers inside CVS's Digital Innovation Lab delivering 150+ projects per year across a multi-billion-dollar portfolio. Owned 7 complex healthcare portfolios simultaneously.</div></div>
-      <div class="wi-stat">
-        <div class="wi-stat-item"><div class="wi-stat-num">150+</div><div class="wi-stat-lbl">Projects / Year</div></div>
-        <div class="wi-stat-item"><div class="wi-stat-num">7</div><div class="wi-stat-lbl">Portfolios Owned</div></div>
+
+    <div class="wt reveal">
+      <div class="wt-left">
+        <div class="wt-co">CVS Health</div>
+        <div class="wt-era">2015 — 2017</div>
+        <div class="wt-stats">
+          <div class="wts"><span class="wts-num">150+</span><span class="wts-lbl">Projects / Year</span></div>
+          <div class="wts"><span class="wts-num">7</span><span class="wts-lbl">Portfolios Owned</span></div>
+        </div>
+      </div>
+      <div class="wt-right">
+        <div class="wt-role">Senior Manager, Digital Experience Production & Operations</div>
+        <div class="wt-body">Built and led a team of digital producers inside CVS's Digital Innovation Lab delivering 150+ projects per year across a multi-billion-dollar portfolio. Owned 7 complex healthcare portfolios simultaneously.</div>
       </div>
     </div>
-    <div class="work-item reveal">
-      <div><div class="wi-co">Reebok / adidas</div><div class="wi-date">2011 &ndash; 2015</div></div>
-      <div><div class="wi-role">Senior Manager, Digital Product Owner &mdash; Global</div><div class="wi-body">Built ReebokONE from concept to a globally acclaimed platform across 20+ countries, 150k+ active fitness professionals, and $10M+ in net sales for 2014. Named a top 10 strategic pillar for Reebok and recognized by Fast Company as their biggest-ever contribution to the fitness world.</div><div class="wi-win"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 4L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>adidas Global CIO Innovation Award and Reebok Employee Recognition Q4 2013</div></div>
-      <div class="wi-stat">
-        <div class="wi-stat-item"><div class="wi-stat-num">150k+</div><div class="wi-stat-lbl">Active Users</div></div>
-        <div class="wi-stat-item"><div class="wi-stat-num">$10M+</div><div class="wi-stat-lbl">Net Sales</div></div>
-        <div class="wi-stat-item"><div class="wi-stat-num">20+</div><div class="wi-stat-lbl">Countries</div></div>
+
+    <div class="wt reveal">
+      <div class="wt-left">
+        <div class="wt-co">Reebok / adidas</div>
+        <div class="wt-era">2011 — 2015</div>
+        <div class="wt-stats">
+          <div class="wts"><span class="wts-num">150k+</span><span class="wts-lbl">Active Users</span></div>
+          <div class="wts"><span class="wts-num">$10M+</span><span class="wts-lbl">Net Sales</span></div>
+          <div class="wts"><span class="wts-num">20+</span><span class="wts-lbl">Countries</span></div>
+        </div>
+      </div>
+      <div class="wt-right">
+        <div class="wt-role">Senior Manager, Digital Product Owner — Global</div>
+        <div class="wt-body">Built ReebokONE from concept to a globally acclaimed platform across 20+ countries, 150k+ active fitness professionals, and $10M+ in net sales. Named a top 10 strategic pillar for Reebok and recognized by Fast Company as their biggest-ever contribution to the fitness world.</div>
+        <div class="wt-win"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 4L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>adidas Global CIO Innovation Award · Reebok Employee Recognition Q4 2013</div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -804,7 +849,7 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
 
 <section id="advisory">
   <!-- Subtle top-right decorative visual -->
-  <svg style="position:absolute;top:0;right:0;width:340px;height:260px;pointer-events:none;" viewBox="0 0 340 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg class="adv-constellation" style="position:absolute;top:0;right:0;width:340px;height:260px;pointer-events:none;" viewBox="0 0 340 260" fill="none" xmlns="http://www.w3.org/2000/svg">
     <!-- Primary nodes — varied sizes -->
     <circle cx="290" cy="22" r="4"   fill="rgba(26,107,138,0.22)"/>
     <circle cx="320" cy="58" r="2.5" fill="rgba(26,107,138,0.16)"/>
@@ -902,8 +947,8 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
       <h2 class="contact-hed">Something magical<br>is <em>on the horizon.</em></h2>
       <p class="contact-sub">Whether you are a founder who needs a product co-pilot, a company that needs to move faster, or an investor looking for a trusted operator, I want to hear from you.</p>
       <div class="contact-links">
-        <a href="mailto:marc@joppadigital.com" onclick="event.preventDefault();openEmail('marc@joppadigital.com')" class="clink"><div class="clink-inner"><div class="clink-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="1" y="3" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M1 6l7.5 5L16 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div><div><div class="clink-lbl">Business Email</div><div class="clink-val">marc@joppadigital.com</div></div></div><div class="clink-arr"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>
-        <a href="mailto:marcgigliotti@gmail.com" onclick="event.preventDefault();openEmail('marcgigliotti@gmail.com')" class="clink"><div class="clink-inner"><div class="clink-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="1" y="3" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M1 6l7.5 5L16 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div><div><div class="clink-lbl">Personal Email</div><div class="clink-val">marcgigliotti@gmail.com</div></div></div><div class="clink-arr"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>
+        <a href="/cdn-cgi/l/email-protection#432e22312003292c333322272a242a37222f6d202c2e" onclick="event.preventDefault();openEmail('marc@joppadigital.com')" class="clink"><div class="clink-inner"><div class="clink-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="1" y="3" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M1 6l7.5 5L16 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div><div><div class="clink-lbl">Business Email</div><div class="clink-val"><span class="__cf_email__" data-cfemail="2f424e5d4c6f45405f5f4e4b4648465b4e43014c4042">[email&#160;protected]</span></div></div></div><div class="clink-arr"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>
+        <a href="/cdn-cgi/l/email-protection#9df0fceffefaf4faf1f4f2e9e9f4ddfaf0fcf4f1b3fef2f0" onclick="event.preventDefault();openEmail('marcgigliotti@gmail.com')" class="clink"><div class="clink-inner"><div class="clink-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="1" y="3" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M1 6l7.5 5L16 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div><div><div class="clink-lbl">Personal Email</div><div class="clink-val"><span class="__cf_email__" data-cfemail="fc919d8e9f9b959b909593888895bc9b919d9590d29f9391">[email&#160;protected]</span></div></div></div><div class="clink-arr"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>
         <a href="https://www.linkedin.com/in/marcgigliotti" target="_blank" class="clink"><div class="clink-inner"><div class="clink-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="1" y="1" width="15" height="15" rx="2.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 7.5v5M5 6v-.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M8 12.5v-2a2 2 0 014 0v2M8 7.5v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div><div><div class="clink-lbl">LinkedIn</div><div class="clink-val">linkedin.com/in/marcgigliotti</div></div></div><div class="clink-arr"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>
         <a href="https://www.joppadigital.com" target="_blank" class="clink"><div class="clink-inner"><div class="clink-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="1" y="1" width="15" height="15" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M6 11L11 6M11 6H7.5M11 6V9.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="clink-lbl">Product Consulting</div><div class="clink-val">joppadigital.com</div></div></div><div class="clink-arr"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>
       </div>
@@ -922,7 +967,7 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
             <div style="text-align:right;font-size:11px;color:rgba(255,255,255,0.3);margin-top:4px;"><span id="cf-count">0</span> / 500</div>
           </div>
           <button type="button" class="form-btn" onclick="sendContactForm()">Send Message <svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <p style="margin-top:14px;font-size:12px;color:rgba(255,255,255,0.3);">Or email directly: <a href="mailto:marc@joppadigital.com" onclick="event.preventDefault();openEmail('marc@joppadigital.com')" style="color:var(--teal-lt);text-decoration:none;" id="directEmail">marc@joppadigital.com</a></p>
+          <p style="margin-top:14px;font-size:12px;color:rgba(255,255,255,0.3);">Or email directly: <a href="/cdn-cgi/l/email-protection#462b273425062c29363627222f212f32272a6825292b" onclick="event.preventDefault();openEmail('marc@joppadigital.com')" style="color:var(--teal-lt);text-decoration:none;" id="directEmail"><span class="__cf_email__" data-cfemail="630e02110023090c131302070a040a17020f4d000c0e">[email&#160;protected]</span></a></p>
         </div>
       </div>
     </div>
@@ -940,7 +985,7 @@ footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;
   <div class="foot-copy">&copy; 2026</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);});
 function openMobileMenu(){document.getElementById('mobileMenu').classList.add('open');}
 function closeMobileMenu(){document.getElementById('mobileMenu').classList.remove('open');}
