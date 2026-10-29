@@ -1,4 +1,5 @@
+# Search engines and AI assistants are welcome.
 User-agent: *
 Allow: /
 
-Sitemap: https://marcgigliotti.com/sitemap.xml
+Sitemap: https://www.marcgigliotti.com/sitemap.xml
