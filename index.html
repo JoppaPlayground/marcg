@@ -190,874 +190,602 @@
 }
 </script>
 <style>
-@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:300;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-300-normal.woff2) format('woff2');}
 @font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-400-normal.woff2) format('woff2');}
 @font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-500-normal.woff2) format('woff2');}
 @font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-600-normal.woff2) format('woff2');}
-@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-700-normal.woff2) format('woff2');}
-@font-face{font-family:'Lora';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/lora-latin-400-normal.woff2) format('woff2');}
 @font-face{font-family:'Lora';font-style:italic;font-weight:400;font-display:swap;src:url(/fonts/lora-latin-400-italic.woff2) format('woff2');}
 @font-face{font-family:'Lora';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/lora-latin-600-normal.woff2) format('woff2');}
-@font-face{font-family:'Lora';font-style:italic;font-weight:600;font-display:swap;src:url(/fonts/lora-latin-600-italic.woff2) format('woff2');}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --white:#FAFAF8;--paper:#F2F0EB;--ink:#0D1B2E;--navy:#1E3A5F;--navy2:#1A3356;
-  --teal:#1A6B8A;--teal-lt:#2B8FAD;--sky:#E8F4F8;--rule:#DDD9D2;--muted:#7A8694;--soft:#A8B3BC;
+  --navy:#1A3356;--navy-deep:#132845;--ink:#0D1B2E;--body:#3D4955;--muted:#5B6774;
+  --paper:#F2F0EB;--white:#FAFAF8;--rule:#DDD9D2;--teal:#1A6B8A;--teal-dark:#135774;--sea:#8CCBE0;
+  --serif:'Lora',Georgia,serif;--sans:'Plus Jakarta Sans',system-ui,sans-serif;
 }
-html{scroll-behavior:smooth;}
-body{background:var(--white);color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
-::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:var(--white);}::-webkit-scrollbar-thumb{background:var(--teal);}
+html{scroll-behavior:smooth;scroll-padding-top:80px;}
+body{background:var(--white);color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+a{color:var(--teal);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;}
+a:hover{color:var(--teal-dark);text-decoration-thickness:2px;}
+:focus-visible{outline:2px solid var(--sea);outline-offset:3px;border-radius:2px;}
+strong{color:var(--ink);font-weight:600;}
+.wrap{max-width:1120px;margin:0 auto;padding:0 48px;}
+section{padding:96px 0;}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(30px,3.4vw,42px);line-height:1.15;letter-spacing:-0.3px;color:var(--ink);margin-bottom:40px;}
+h3,h4{font-family:var(--serif);font-weight:600;color:var(--ink);line-height:1.3;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+.btn{display:inline-block;background:var(--teal);color:#fff;font-family:var(--sans);font-weight:600;font-size:16px;line-height:1.2;padding:13px 22px;border:0;border-radius:4px;text-decoration:none;cursor:pointer;}
+.btn:hover{background:var(--teal-dark);color:#fff;text-decoration:none;}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:22px 60px;transition:all 0.35s;}
-nav.scrolled{background:rgba(250,250,248,0.96);backdrop-filter:blur(16px);padding:14px 60px;border-bottom:1px solid var(--rule);}
-.nav-logo{text-decoration:none;display:flex;align-items:center;gap:10px;}
-.nav-logo-name{font-size:15px;font-weight:700;color:#fff;line-height:1;transition:color 0.3s;}
-nav.scrolled .nav-logo-name{color:var(--ink);}
-.nav-logo-sub{font-size:10px;font-weight:500;color:var(--teal-lt);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px;}
-nav.scrolled .nav-logo-sub{color:var(--teal);}
-.nav-links{display:flex;gap:32px;list-style:none;align-items:center;}
-.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,0.65);text-decoration:none;transition:color 0.2s;}
-nav.scrolled .nav-links a{color:var(--muted);}
-.nav-links a:hover{color:#fff;}
-nav.scrolled .nav-links a:hover{color:var(--ink);}
-.nav-cta{font-size:13px;font-weight:600;color:#fff;background:var(--teal);padding:10px 22px;text-decoration:none;border-radius:4px;transition:background 0.2s;}
-.nav-cta:hover{background:var(--teal-lt);}
-.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}
-.nav-hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;transition:all 0.3s;}
-nav.scrolled .nav-hamburger span{background:var(--ink);}
-.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--navy);z-index:300;flex-direction:column;align-items:center;justify-content:center;gap:32px;}
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;border-bottom:1px solid transparent;transition:background .25s,border-color .25s;}
+nav.scrolled{background:rgba(250,250,248,.97);border-bottom-color:var(--rule);}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;}
+.nav-name{font-family:var(--serif);font-weight:600;font-size:19px;line-height:1.25;color:#fff;text-decoration:none;}
+.nav-name small{display:block;font-family:var(--sans);font-weight:400;font-size:13px;color:rgba(255,255,255,.7);}
+.nav-name:hover{color:#fff;text-decoration:none;}
+nav.scrolled .nav-name,nav.scrolled .nav-name:hover{color:var(--ink);}
+nav.scrolled .nav-name small{color:var(--muted);}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
+.nav-links a:not(.btn){font-size:15px;color:rgba(255,255,255,.85);text-decoration:none;}
+.nav-links a:not(.btn):hover{color:#fff;text-decoration:underline;}
+nav.scrolled .nav-links a:not(.btn){color:var(--body);}
+nav.scrolled .nav-links a:not(.btn):hover{color:var(--ink);}
+.nav-links .btn{font-size:15px;padding:10px 18px;}
+.nav-toggle{display:none;background:none;border:0;padding:6px;cursor:pointer;}
+.nav-toggle span{display:block;width:22px;height:2px;margin:5px 0;border-radius:2px;background:#fff;}
+nav.scrolled .nav-toggle span{background:var(--ink);}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:300;background:var(--navy);flex-direction:column;justify-content:center;gap:20px;padding:0 32px;}
 .mobile-menu.open{display:flex;}
-.mobile-menu a{font-size:22px;font-weight:600;color:rgba(255,255,255,0.8);text-decoration:none;transition:color 0.2s;}
-.mobile-menu a:hover{color:var(--teal-lt);}
-.mobile-close{position:absolute;top:24px;right:24px;background:none;border:none;color:rgba(255,255,255,0.6);font-size:28px;cursor:pointer;padding:4px;}
+.mobile-menu a{font-family:var(--serif);font-size:28px;color:#fff;text-decoration:none;}
+.mobile-close{position:absolute;top:18px;right:22px;background:none;border:0;color:#fff;font-size:34px;line-height:1;cursor:pointer;}
 
-/* HERO */
-#hero{height:100vh;min-height:600px;max-height:920px;background:var(--navy2);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:0 60px;}
+/* Hero */
+#hero{position:relative;overflow:hidden;background:var(--navy);color:#fff;padding:160px 0 128px;}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:56px;align-items:center;}
+.hero-hello{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--sea);margin-bottom:14px;}
+.hero-h1{font-family:var(--serif);font-weight:600;font-size:clamp(38px,4.6vw,60px);line-height:1.08;letter-spacing:-0.6px;color:#fff;max-width:13em;}
+.hero-sub{margin-top:26px;font-size:19px;line-height:1.65;color:rgba(255,255,255,.8);max-width:33em;}
+.hero-sub strong{color:#fff;}
+.hero-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:28px;margin-top:36px;}
+.hero-ctas a:not(.btn){color:var(--sea);font-weight:500;}
+.hero-ctas a:not(.btn):hover{color:#fff;}
+.hero-facts{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:12px 48px;list-style:none;margin-top:16px;padding-top:24px;border-top:1px solid rgba(255,255,255,.15);font-size:15.5px;color:rgba(255,255,255,.75);}
+.hero-facts b{font-family:var(--serif);font-weight:600;font-size:24px;color:#fff;margin-right:6px;}
+.compass{width:360px;height:360px;}
+.compass svg{display:block;width:100%;height:100%;}
+.hero-waves{position:absolute;left:0;right:0;bottom:-1px;height:80px;overflow:hidden;pointer-events:none;}
+.hero-waves svg{position:absolute;bottom:0;left:0;width:200%;height:100%;animation:drift 48s linear infinite;}
+.hero-waves svg+svg{animation-duration:72s;}
+@keyframes drift{to{transform:translateX(-50%);}}
 
-/* Hero visual, right side */
-.hero-visual{position:absolute;right:0;top:0;width:52%;height:100%;pointer-events:none;}
-.hero-fade{position:absolute;top:0;left:0;width:45%;height:100%;background:linear-gradient(to right,var(--navy2) 55%,transparent 100%);z-index:2;}
+/* About */
+.about-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:80px;}
+.about-avatar{width:112px;height:112px;border-radius:50%;overflow:hidden;background:#E6F0F3;margin-bottom:28px;}
+.about-avatar img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top;mix-blend-mode:multiply;}
+.about-pull{font-family:var(--serif);font-style:italic;font-size:clamp(23px,2.4vw,29px);line-height:1.4;color:var(--ink);max-width:24em;margin-bottom:28px;}
+.about-body p{max-width:36em;margin-bottom:16px;}
+.about-body .strengths{margin-top:24px;font-size:15.5px;color:var(--muted);}
+.aside-group{padding:22px 0;border-top:1px solid var(--rule);}
+.aside-group:first-child{padding-top:4px;border-top:0;}
+.aside-group h3{font-size:18px;margin-bottom:12px;}
+.aside-group ul{list-style:none;}
+.aside-group li{line-height:1.45;margin-bottom:12px;}
+.aside-group li:last-child{margin-bottom:0;}
+.aside-group li b{font-weight:500;font-size:15.5px;color:var(--ink);}
+.aside-group li span{display:block;font-size:14px;color:var(--muted);}
 
-/* Animated rings */
-@keyframes spin-slow{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
-@keyframes spin-rev{from{transform:rotate(0deg);}to{transform:rotate(-360deg);}}
-@keyframes pulse-glow{0%,100%{opacity:0.5;}50%{opacity:1;}}
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+/* Work */
+#work{background:var(--paper);}
+.job{display:grid;grid-template-columns:240px minmax(0,1fr);gap:48px;padding:36px 0;border-top:1px solid var(--rule);}
+.job:last-child{border-bottom:1px solid var(--rule);}
+.job-co{font-family:var(--serif);font-weight:600;font-size:22px;line-height:1.25;color:var(--ink);}
+.job-years{font-size:14.5px;color:var(--muted);margin-top:4px;}
+.job-stats{list-style:none;margin-top:18px;font-size:15px;}
+.job-stats li{margin-bottom:4px;}
+.job-stats b{font-family:var(--serif);font-weight:600;font-size:17px;color:var(--teal);margin-right:4px;}
+.job-role{font-weight:600;font-size:17px;line-height:1.45;color:var(--ink);margin-bottom:10px;}
+.job p{max-width:40em;}
+.job .job-win{margin-top:12px;font-size:15.5px;font-weight:600;color:var(--teal-dark);}
 
-.compass-wrap{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:440px;height:440px;}
-.compass-ring-outer{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(43,143,173,0.25);animation:spin-slow 60s linear infinite;}
-.compass-ring-mid{position:absolute;inset:30px;border-radius:50%;border:1px solid rgba(43,143,173,0.18);border-style:dashed;animation:spin-rev 40s linear infinite;}
-.compass-ring-inner{position:absolute;inset:80px;border-radius:50%;border:1.5px solid rgba(43,143,173,0.3);}
-.compass-ring-core{position:absolute;inset:150px;border-radius:50%;border:1px solid rgba(43,143,173,0.2);}
+/* Products */
+.prod{display:grid;grid-template-columns:250px minmax(0,1fr) 190px;gap:40px;padding:30px 0;border-top:1px solid var(--rule);}
+.prod:last-child{border-bottom:1px solid var(--rule);}
+.prod-name{font-family:var(--serif);font-weight:600;font-size:21px;line-height:1.25;color:var(--ink);}
+.prod-tag{font-size:14px;color:var(--muted);margin-top:4px;}
+.prod-desc{max-width:38em;}
+.prod-meta{font-size:14.5px;color:var(--muted);}
+.prod-meta a{display:inline-block;margin-top:2px;font-size:15px;font-weight:500;}
 
-/* Tick marks on outer ring */
-.tick{position:absolute;top:50%;left:50%;width:1px;transform-origin:0 0;}
-.tick::after{content:'';display:block;background:rgba(43,143,173,0.5);width:1px;}
+/* Working together */
+#advisory{background:var(--paper);}
+#advisory h2{margin-bottom:16px;}
+.adv-intro{font-size:19px;line-height:1.6;max-width:36em;margin-bottom:56px;}
+.together{display:grid;grid-template-columns:1fr 1fr;gap:72px;}
+.together h3{font-size:22px;margin-bottom:22px;}
+.help dt{font-family:var(--serif);font-weight:600;font-size:18.5px;color:var(--ink);}
+.help dd{margin:4px 0 22px;}
+.role{padding-bottom:22px;margin-bottom:22px;border-bottom:1px solid var(--rule);}
+.role h4{font-size:18.5px;}
+.role-meta{font-size:14.5px;color:var(--muted);margin:2px 0 8px;}
+.open-slot{background:var(--white);border:1px solid var(--rule);border-radius:6px;padding:24px 26px;}
+.open-slot h4{font-size:18.5px;}
+.open-slot p{margin-top:8px;}
 
-/* SVG compass overlay */
-.compass-svg{position:absolute;inset:0;width:100%;height:100%;}
+/* Q&A */
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px 72px;}
+.faq-q{font-family:var(--serif);font-weight:600;font-size:20px;line-height:1.35;color:var(--ink);margin-bottom:10px;}
+.faq-a{max-width:34em;}
 
+/* Contact */
+#contact{background:var(--navy);color:rgba(255,255,255,.8);}
+#contact h2{color:#fff;margin-bottom:18px;}
+.contact-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:80px;}
+.contact-sub{font-size:18px;max-width:30em;margin-bottom:36px;}
+.contact-list{display:grid;grid-template-columns:max-content 1fr;gap:12px 24px;}
+.contact-list dt{color:rgba(255,255,255,.62);}
+.contact-list a{color:#fff;}
+.contact-list a:hover{color:var(--sea);}
+.form{display:grid;gap:22px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.form label{display:block;font-size:14.5px;color:rgba(255,255,255,.75);margin-bottom:6px;}
+.form-input{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.2);border-radius:4px;color:#fff;padding:12px 14px;font-family:var(--sans);font-size:16px;line-height:1.5;}
+.form-input::placeholder{color:rgba(255,255,255,.42);}
+.form-input:focus{outline:none;border-color:var(--sea);}
+textarea.form-input{min-height:128px;resize:vertical;}
+.form-count{display:block;text-align:right;font-size:13px;color:rgba(255,255,255,.5);margin-top:6px;}
+.form-foot{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;}
+.form-alt{font-size:14.5px;color:rgba(255,255,255,.62);}
+.form-alt a{color:var(--sea);}
 
+/* Footer */
+footer{background:var(--navy-deep);color:rgba(255,255,255,.62);font-size:14.5px;padding:28px 0;}
+footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;}
+.foot-name{font-family:var(--serif);font-weight:600;font-size:16px;color:#fff;}
+.foot-links{display:flex;flex-wrap:wrap;gap:22px;}
+footer a{color:rgba(255,255,255,.78);text-decoration:none;}
+footer a:hover{color:#fff;text-decoration:underline;}
 
-/* Cardinal labels */
-.cardinal{position:absolute;font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.5);}
-
-/* Horizon line with waves */
-.horizon{position:absolute;bottom:0;left:0;right:0;height:35%;overflow:hidden;}
-.wave-svg{position:absolute;bottom:0;left:0;width:200%;height:100%;}
-@keyframes wave-move{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-.wave-1{animation:wave-move 12s linear infinite;opacity:0.06;}
-.wave-2{animation:wave-move 18s linear infinite;opacity:0.04;animation-delay:-6s;}
-
-/* Hero content */
-.hero-content{position:relative;z-index:3;display:flex;flex-direction:column;justify-content:center;flex:1;padding-top:40px;max-width:640px;}
-.hero-visual{position:absolute;right:0;top:0;width:44%;height:100%;pointer-events:none;}
-.hero-fade{position:absolute;top:0;left:0;width:50%;height:100%;background:linear-gradient(to right,var(--navy2) 60%,transparent 100%);z-index:2;}
-@media(max-width:1024px){.hero-content{padding-top:32px;}}
-@media(max-width:768px){.hero-content{padding-top:24px;}}
-@media(max-width:480px){.hero-content{padding-top:16px;}}
-.hero-kicker{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--teal-lt);margin-bottom:28px;display:flex;align-items:center;gap:12px;opacity:0;animation:fadeUp 0.6s 0.3s forwards;}
-.hero-kicker-line{width:28px;height:1px;background:var(--teal-lt);flex-shrink:0;}
-.hero-h1{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:clamp(28px,3.2vw,56px);line-height:1.1;letter-spacing:-1.5px;color:#fff;opacity:0;animation:fadeUp 0.8s 0.45s forwards;white-space:nowrap;}
-.hero-h1 .accent{color:var(--teal-lt);}
-.hero-sub{margin-top:28px;font-size:18px;line-height:1.8;color:rgba(255,255,255,0.5);font-weight:300;max-width:560px;opacity:0;animation:fadeUp 0.8s 0.6s forwards;}
-.hero-sub strong{color:rgba(255,255,255,0.82);font-weight:500;}
-.hero-ctas{display:flex;align-items:center;gap:14px;margin-top:36px;opacity:0;animation:fadeUp 0.8s 0.75s forwards;}
-.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#fff;font-size:13px;font-weight:600;padding:13px 26px;border-radius:4px;text-decoration:none;transition:background 0.2s,transform 0.15s;}
-.btn-primary:hover{background:var(--teal-lt);transform:translateY(-2px);}
-.btn-ghost{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.65);font-size:13px;font-weight:500;padding:13px 22px;border-radius:4px;text-decoration:none;transition:border-color 0.2s,color 0.2s;}
-.btn-ghost:hover{border-color:rgba(255,255,255,0.5);color:#fff;}
-
-/* Stats */
-.hero-stats{position:relative;z-index:3;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,0.1);opacity:0;animation:fadeUp 0.8s 0.9s forwards;}
-.hs{padding:22px 0;border-right:1px solid rgba(255,255,255,0.07);padding-right:28px;margin-right:28px;}
-.hs:last-child{border-right:none;margin-right:0;padding-right:0;}
-.hs-num{font-family:'Lora',serif;font-size:38px;font-weight:600;color:#fff;line-height:1;letter-spacing:-1px;}
-.hs-label{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:6px;}
-
-/* DIVIDER */
-.nautical-divider{display:flex;align-items:center;gap:20px;padding:20px 60px;}
-.nd-line{flex:1;height:1px;background:var(--rule);}
-.nd-icon{color:var(--teal);opacity:0.4;flex-shrink:0;}
-
-/* SECTIONS */
-section{padding:72px 60px;}
-.sec-label{display:flex;align-items:center;gap:14px;font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-bottom:20px;}
-#about .sec-label{margin-bottom:20px;}
-.sec-label-line{width:24px;height:2px;background:var(--teal);border-radius:2px;flex-shrink:0;}
-.sec-h{font-family:'Lora',serif;font-weight:600;font-size:clamp(30px,3.8vw,52px);line-height:1.1;letter-spacing:-0.5px;color:var(--ink);margin-bottom:32px;}
-#about .sec-h{margin-bottom:24px;}
-.sec-h em{font-style:italic;color:var(--teal);}
-
-
-/* AVATAR */
-.about-avatar{width:148px;height:148px;border-radius:50%;overflow:hidden;background:#F0F7FA;box-shadow:0 4px 24px rgba(26,107,138,0.1);flex-shrink:0;margin-bottom:16px;}
-.about-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top;mix-blend-mode:multiply;}
-/* ABOUT */
-#about{background:var(--white);padding-top:24px;padding-bottom:40px;}
-.about-layout{display:grid;grid-template-columns:1.2fr 0.8fr;gap:48px;align-items:start;}
-.about-left{display:flex;flex-direction:column;}
-.about-pull{font-family:'Lora',serif;font-style:italic;font-size:clamp(16px,1.6vw,21px);line-height:1.5;color:var(--ink);border-left:3px solid var(--teal);padding-left:18px;margin-bottom:16px;}
-.about-body p{font-size:14px;line-height:1.75;color:var(--muted);font-weight:300;margin-bottom:10px;}
-.about-body p strong{color:var(--ink);font-weight:600;}
-.skills-wrap{display:flex;flex-wrap:wrap;gap:10px 8px;margin-top:20px;margin-bottom:0;align-items:center;}
-.skill{font-size:11px;font-weight:600;letter-spacing:0.4px;padding:6px 14px;border-radius:100px;display:inline-block;background:#E8F4F8;color:#1A6B8A;}
-.skill:nth-child(even){background:#E3EBF2;color:#1E3A5F;}
-.about-aside{padding-top:0;}
-.aside-row{padding:14px 0;border-bottom:1px solid var(--rule);}
-.aside-row:first-child{border-top:1px solid var(--rule);}
-.aside-lbl{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
-.aside-val{font-size:13px;color:var(--ink);font-weight:500;line-height:1.4;margin-bottom:2px;}
-.aside-sub{font-size:12px;color:var(--muted);font-weight:300;line-height:1.5;}
-
-/* WORK */
-#work{background:var(--paper);padding-bottom:80px;}
-.work-timeline{display:flex;flex-direction:column;margin-top:40px;gap:0;}
-.wt{display:grid;grid-template-columns:220px 1fr;gap:0;padding:28px 0;border-top:1px solid var(--rule);}
-.wt:last-child{border-bottom:1px solid var(--rule);}
-.wt-left{padding-right:36px;border-right:1px solid var(--rule);}
-.wt-co{font-family:'Lora',serif;font-size:17px;font-weight:600;color:var(--ink);margin-bottom:4px;line-height:1.2;}
-.wt-era{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--soft);margin-bottom:16px;}
-.wt-stats{display:flex;flex-direction:column;gap:8px;margin-top:auto;}
-.wts{display:flex;align-items:baseline;gap:6px;}
-.wts-num{font-family:'Lora',serif;font-size:18px;font-weight:600;color:var(--teal);line-height:1;}
-.wts-lbl{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--soft);}
-.wt-right{padding-left:36px;display:flex;flex-direction:column;}
-.wt-role{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.4;text-transform:uppercase;letter-spacing:0.3px;}
-.wt-body{font-size:14px;line-height:1.8;color:var(--muted);font-weight:300;margin-bottom:0;}
-.wt-win{display:inline-flex;align-items:flex-start;gap:7px;margin-top:12px;font-size:12px;font-weight:600;color:var(--teal);line-height:1.5;}
-.wt-win svg{flex-shrink:0;margin-top:2px;}
-
-/* PRODUCTS HEADER VISUAL, simple lighthouse with beam */
-.products-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:0;gap:40px;}
-.products-launch-visual{flex-shrink:0;}
-.plv-svg{width:160px;height:88px;overflow:visible;}
-@keyframes beamSweep{
-  0%,100%{transform:rotate(-35deg);opacity:0.5;}
-  50%{transform:rotate(25deg);opacity:0.8;}
-}
-@keyframes lightPulse{
-  0%,100%{opacity:0.7;}50%{opacity:1;}
-}
-.lh-beam{transform-origin:80px 38px;animation:beamSweep 4s ease-in-out infinite;}
-.lh-light{animation:lightPulse 4s ease-in-out infinite;}
-
-/* PRODUCTS */
-#products{background:var(--white);}
-.products-list{display:flex;flex-direction:column;}
-.prod-row{display:grid;grid-template-columns:230px 1fr 150px;gap:36px;align-items:start;padding:32px 0;border-top:1px solid var(--rule);}
-.prod-row:last-child{border-bottom:1px solid var(--rule);}
-.prod-row:hover .prod-name{color:var(--teal);}
-.prod-tag{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--soft);margin-bottom:7px;}
-.prod-name{font-family:'Lora',serif;font-size:21px;font-weight:600;color:var(--ink);line-height:1.1;transition:color 0.2s;}
-.prod-desc{font-size:14px;line-height:1.75;color:var(--muted);font-weight:300;}
-.prod-right{display:flex;flex-direction:column;align-items:flex-end;gap:9px;}
-.prod-stage{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--soft);}
-.prod-link{font-size:13px;font-weight:600;color:var(--teal);text-decoration:none;display:flex;align-items:center;gap:5px;transition:gap 0.15s;}
-.prod-link:hover{gap:9px;}
-
-/* ADVISORY */
-#advisory{background:var(--paper);position:relative;overflow:hidden;padding-bottom:72px;}
-.adv-intro{font-size:16px;line-height:1.75;color:var(--muted);font-weight:300;max-width:560px;margin-bottom:36px;}
-.adv-intro strong{color:var(--ink);font-weight:600;}
-.adv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch;}
-.adv-card{background:var(--white);border-radius:10px;padding:28px 24px;border:1px solid var(--rule);transition:border-color 0.25s,transform 0.25s,box-shadow 0.25s;position:relative;overflow:hidden;display:flex;flex-direction:column;}
-.adv-card:hover{border-color:rgba(26,107,138,0.3);transform:translateY(-4px);box-shadow:0 16px 40px rgba(26,107,138,0.09);}
-.adv-card.open{border-color:rgba(26,107,138,0.25);background:linear-gradient(145deg,#fff 60%,var(--sky) 100%);}
-/* Span full width when orphaned in 2-col grid */
-@media(max-width:900px) and (min-width:601px){
-  .adv-grid{grid-template-columns:1fr 1fr;}
-  .adv-card.open{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;}
-  .adv-card.open .adv-footer{grid-column:1/-1;}
-}
-/* Full width at mobile too, with visual fill */
-@media(max-width:600px){
-  .adv-card.open{grid-column:1/-1;}
-  .adv-open-visual{display:flex!important;}
-}
-.adv-icon{width:36px;height:36px;border-radius:8px;background:var(--sky);display:flex;align-items:center;justify-content:center;color:var(--teal);margin-bottom:16px;flex-shrink:0;}
-.adv-card.open .adv-icon{background:rgba(26,107,138,0.12);}
-.adv-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
-.adv-name{font-family:'Lora',serif;font-size:20px;font-weight:600;color:var(--ink);margin-bottom:4px;line-height:1.15;}
-.adv-role{font-size:12px;font-weight:500;color:var(--soft);margin-bottom:12px;letter-spacing:0.3px;}
-.adv-body{font-size:13px;line-height:1.75;color:var(--muted);font-weight:300;flex:1;}
-.adv-footer{margin-top:16px;padding-top:14px;border-top:1px solid var(--rule);display:flex;align-items:center;gap:8px;}
-.adv-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);}
-.adv-status{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--teal);}
-
-/* CONTACT, tighter, more integrated layout */
-#contact{background:var(--navy);padding:72px 60px;}
-.contact-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:start;}
-.contact-hed{font-family:'Lora',serif;font-size:clamp(28px,3.5vw,50px);font-weight:600;line-height:1.05;letter-spacing:-0.5px;color:#fff;margin-bottom:16px;}
-.contact-hed em{font-style:italic;color:var(--teal-lt);}
-.contact-sub{font-size:15px;line-height:1.75;color:rgba(255,255,255,0.5);font-weight:300;margin-bottom:32px;}
-.contact-links{display:flex;flex-direction:column;gap:2px;}
-.clink{display:flex;align-items:center;justify-content:space-between;padding:15px 0;border-top:1px solid rgba(255,255,255,0.1);text-decoration:none;transition:padding-left 0.2s;gap:16px;}
-.clink:last-child{border-bottom:1px solid rgba(255,255,255,0.1);}
-.clink:hover{padding-left:8px;}
-.clink-inner{display:flex;align-items:center;gap:13px;}
-.clink-icon{color:var(--teal-lt);flex-shrink:0;}
-.clink-lbl{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:2px;}
-.clink-val{font-size:14px;font-weight:500;color:rgba(255,255,255,0.8);}
-.clink-arr{color:var(--teal-lt);flex-shrink:0;}
-.contact-form-wrap{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:32px 28px;}
-.form{display:flex;flex-direction:column;gap:18px;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.form-g{display:flex;flex-direction:column;gap:6px;}
-.form-lbl{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4);}
-.form-input{background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.2);color:#fff;padding:10px 0;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s;width:100%;}
-.form-input::placeholder{color:rgba(255,255,255,0.25);}
-.form-input:focus{border-color:var(--teal-lt);}
-textarea.form-input{resize:none;min-height:80px;}
-.form-btn{display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#fff;border:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:600;padding:13px 26px;border-radius:4px;cursor:pointer;transition:background 0.2s,transform 0.15s;align-self:flex-start;margin-top:4px;}
-.form-btn:hover{background:var(--teal-lt);transform:translateY(-2px);}
-.band{
-  background:linear-gradient(180deg,#1A3356 0%,#1E3A5F 30%,#2A5070 55%,#1E3D5C 75%,#1A3356 100%);
-  padding:80px 60px;position:relative;overflow:hidden;
-}
-.band::before{
-  content:'';position:absolute;top:0;left:0;right:0;bottom:0;
-  background:radial-gradient(ellipse 60% 50% at 88% 15%,rgba(230,140,60,0.18) 0%,rgba(200,100,40,0.08) 40%,transparent 70%),
-             radial-gradient(ellipse 35% 28% at 88% 15%,rgba(255,180,80,0.12) 0%,transparent 60%);
-  pointer-events:none;
-}
-@keyframes wv1{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-@keyframes wv2{from{transform:translateX(-25%);}to{transform:translateX(-75%);}}
-@keyframes wv3{from{transform:translateX(-10%);}to{transform:translateX(-60%);}}
-.band-waves{position:absolute;bottom:0;left:0;right:0;height:45%;pointer-events:none;overflow:hidden;}
-.bw1{position:absolute;bottom:0;width:200%;animation:wv1 14s linear infinite;opacity:0.18;}
-.bw2{position:absolute;bottom:0;width:200%;animation:wv2 20s linear infinite;opacity:0.1;}
-.bw3{position:absolute;bottom:0;width:200%;animation:wv3 28s linear infinite;opacity:0.07;}
-.band-sun{position:absolute;top:10%;right:8%;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(255,190,80,0.18) 0%,rgba(230,140,60,0.08) 50%,transparent 70%);pointer-events:none;}
-.band-horizon{position:absolute;bottom:42%;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,180,80,0.12) 30%,rgba(255,200,100,0.18) 70%,transparent);pointer-events:none;}
-.band-content{position:relative;z-index:2;}
-.band-compass{display:none;}
-.band-label{font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,200,120,0.6);margin-bottom:18px;display:flex;align-items:center;gap:10px;}
-.band-label-line{width:20px;height:1px;background:rgba(255,200,120,0.4);}
-.band-h{font-family:'Lora',serif;font-size:clamp(26px,3.2vw,44px);font-weight:600;color:#fff;line-height:1.1;letter-spacing:-0.5px;margin-bottom:52px;max-width:480px;}
-.band-h em{font-style:italic;color:rgba(255,190,100,0.55);}
-.services{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.07);border-radius:8px;overflow:hidden;}
-.svc{padding:28px 24px;background:rgba(255,255,255,0.03);transition:background 0.2s;}
-.svc:hover{background:rgba(255,255,255,0.06);}
-.svc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
-.svc-icon{width:32px;height:32px;border-radius:6px;background:rgba(255,200,120,0.1);border:1px solid rgba(255,200,120,0.2);display:flex;align-items:center;justify-content:center;color:rgba(255,200,120,0.8);}
-.svc-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.25;}
-.svc-body{font-size:12.5px;line-height:1.75;color:rgba(255,255,255,0.38);font-weight:300;}
-
-/* FOOTER */
-footer{background:var(--navy);padding:36px 60px;display:flex;align-items:center;justify-content:space-between;}
-.foot-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
-.foot-name{font-size:14px;font-weight:700;color:#fff;}
-.foot-name span{font-weight:300;color:rgba(255,255,255,0.35);}
-.foot-links{display:flex;gap:24px;}
-.foot-links a{font-size:12px;color:rgba(255,255,255,0.38);text-decoration:none;transition:color 0.2s;}
-.foot-links a:hover{color:rgba(255,255,255,0.75);}
-.foot-copy{font-size:11px;color:rgba(255,255,255,0.22);letter-spacing:1px;}
-
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(14px);transition:opacity 0.6s ease,transform 0.6s ease;}
-.reveal.in{opacity:1;transform:translateY(0);}
-
-/* RESPONSIVE */
+/* Responsive */
 @media(max-width:1024px){
-  nav,nav.scrolled{padding:18px 32px;}
-  section{padding:72px 32px;}
-  #contact{padding:72px 32px;}
-  .nautical-divider,.band{padding-left:32px;padding-right:32px;}
-  footer{padding:28px 32px;}
-  #hero{padding:0 32px;}
-  .about-layout{grid-template-columns:1fr;gap:40px;}
-  .about-aside{position:static;padding-top:0;}
-  .services{grid-template-columns:1fr 1fr;}
-  .adv-grid{grid-template-columns:repeat(3,1fr);gap:16px;}
-  .contact-inner{gap:40px;}
-  .wt{grid-template-columns:180px 1fr;}
-  .products-header{flex-direction:column;align-items:flex-start;gap:12px;}
-  .products-launch-visual{width:160px;}
-  .plv-svg{width:160px;}
+  .wrap{padding:0 32px;}
+  .hero-grid{grid-template-columns:minmax(0,1fr) 260px;gap:40px;}
+  .compass{width:260px;height:260px;}
+  .about-grid{grid-template-columns:1fr;gap:48px;}
+  .prod{grid-template-columns:220px minmax(0,1fr);gap:12px 40px;}
+  .prod-meta{grid-column:2;}
+  .together{gap:48px;}
+  .contact-grid{gap:56px;}
 }
-@media(max-width:768px){
-  nav,nav.scrolled{padding:16px 20px;}
-  .nav-links,.nav-cta{display:none;}
-  .nav-hamburger{display:flex;}
-  section{padding:56px 20px;}
-  #contact{padding:56px 20px;}
-  .nautical-divider{padding:0 20px;}
-  .band{padding:52px 20px;}
-  footer{padding:28px 20px;flex-direction:column;gap:20px;text-align:center;}
-  .foot-links{flex-wrap:wrap;justify-content:center;gap:16px;}
-  .foot-copy{display:none;}
-  #hero{padding:0 20px;max-height:none;height:100svh;min-height:580px;}
-  .hero-content{padding-top:8px!important;}
-  .hero-kicker{font-size:10px;letter-spacing:2px;gap:8px;flex-wrap:nowrap;}
-  /* Compass: shrink and push to bottom-right corner, very faint */
-  .hero-visual{position:absolute!important;width:200px!important;height:200px!important;right:-20px!important;bottom:80px!important;top:auto!important;left:auto!important;opacity:0.08!important;}
-  .hero-fade{display:none;}
-  .hero-h1{font-size:clamp(32px,7vw,50px);letter-spacing:-1px;white-space:normal;}
-  .hero-sub{max-width:100%;font-size:14px;}
-  .hero-stats{grid-template-columns:1fr 1fr;}
-  .hs{border-right:none;margin-right:0;padding-right:0;}
-  .hs:nth-child(odd){border-right:1px solid rgba(255,255,255,0.07);padding-right:16px;margin-right:16px;}
-  .hs-num{font-size:26px;}
-  .hs-label{font-size:9px;}
-  .about-layout{grid-template-columns:1fr;gap:36px;align-items:start!important;}
-  .about-aside{position:static;padding-top:0;}
-  .wt{grid-template-columns:1fr;gap:14px;}
-  .wt-left{border-right:none;padding-right:0;border-bottom:1px solid var(--rule);padding-bottom:14px;}
-  .wt-right{padding-left:0;}
-  .wt-stats{flex-direction:row;flex-wrap:wrap;gap:12px 20px;}
-  .wi-stat{flex-direction:row;flex-wrap:wrap;gap:8px;}
-  .wi-stat-item{flex:1;min-width:100px;}
-  .wi-stat-item:hover{transform:none;}
-  .prod-row{grid-template-columns:1fr;gap:10px;padding:24px 0;}
-  .prod-right{align-items:flex-start;}
-  .prod-name{font-size:18px;}
-  .services{grid-template-columns:1fr 1fr;}
-  .svc:nth-child(odd){border-right:none;}
-  .adv-grid{grid-template-columns:1fr;gap:14px;}
-  /* Band glow: keep but much more subtle */
-  .band-sun{opacity:0.3;}
-  .band::before{opacity:0.3;}
-  .contact-inner{grid-template-columns:1fr;gap:32px;}
-  .form-row{grid-template-columns:1fr;}
-  .products-header{flex-direction:column;align-items:flex-start;gap:12px;}
-  .products-launch-visual{display:none;}
-  .sec-h{font-size:clamp(26px,6vw,40px);}
-  .band-h{font-size:clamp(22px,5vw,36px);}
-  .contact-hed{font-size:clamp(26px,7vw,42px);}
+@media(max-width:820px){
+  section{padding:72px 0;}
+  .nav-links{display:none;}
+  .nav-toggle{display:block;}
+  #hero{padding:132px 0 116px;}
+  .hero-grid{grid-template-columns:1fr;}
+  .compass{display:none;}
+  .hero-facts{margin-top:40px;}
+  .job{grid-template-columns:1fr;gap:10px;padding:28px 0;}
+  .job-stats{display:flex;flex-wrap:wrap;gap:0 20px;margin-top:8px;}
+  .prod{grid-template-columns:1fr;gap:8px;padding:26px 0;}
+  .prod-meta{grid-column:auto;}
+  .together,.faq-grid,.contact-grid{grid-template-columns:1fr;gap:40px;}
 }
 @media(max-width:480px){
-  section{padding:44px 16px;}
-  #contact{padding:44px 16px;}
-  .band{padding:44px 16px;}
-  nav,nav.scrolled{padding:14px 16px;}
-  #hero{padding:0 16px;}
-  .hero-h1{font-size:24px;letter-spacing:-0.5px;}
-  .hero-ctas{flex-direction:column;align-items:flex-start;gap:10px;}
-  .btn-primary,.btn-ghost{width:100%;justify-content:center;}
-  .hero-stats{grid-template-columns:1fr 1fr;}
-  .hs-num{font-size:22px;}
-  .services{grid-template-columns:1fr;}
-  .nautical-divider{padding:28px 16px;}
-  .adv-grid{grid-template-columns:1fr;}
-  .prod-row{padding:18px 0;}
-  footer{padding:20px 16px;}
-  .sec-label{margin-bottom:20px;}
+  body{font-size:16px;}
+  .wrap{padding:0 20px;}
+  .hero-sub{font-size:17px;}
+  .hero-facts{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;}
+  .hero-facts li{line-height:1.35;}
+  .hero-facts b{display:block;margin:0 0 2px;}
+  .form-row{grid-template-columns:1fr;}
+  .contact-list{grid-template-columns:1fr;gap:2px;}
+  .contact-list dd{margin-bottom:12px;}
 }
-
 @media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important;}
-  .reveal{opacity:1;transform:none;}
-  .hero-kicker,.hero-h1,.hero-sub,.hero-ctas,.hero-stats{opacity:1;}
+  html{scroll-behavior:auto;}
+  .hero-waves svg{animation:none;}
+  nav{transition:none;}
 }
-/* Screen-reader and crawler text */
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
-/* FAQ */
-#faq{background:var(--white);}
-.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px 64px;max-width:1120px;}
-.faq-item{border-left:2px solid var(--teal);padding-left:20px;}
-.faq-q{font-size:17px;font-weight:600;color:var(--ink);line-height:1.35;margin-bottom:10px;}
-.faq-a{font-size:15px;line-height:1.75;color:var(--muted);font-weight:400;}
-@media(max-width:768px){.faq-grid{grid-template-columns:1fr;gap:28px;}}
 </style>
 </head>
 <body>
 
 <div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" onclick="closeMobileMenu()">&times;</button>
+  <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu">&times;</button>
   <a href="#about" onclick="closeMobileMenu()">About</a>
   <a href="#work" onclick="closeMobileMenu()">Work</a>
   <a href="#products" onclick="closeMobileMenu()">Products</a>
-  <a href="#advisory" onclick="closeMobileMenu()">Advisory</a>
-  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
-  <a href="#contact" onclick="closeMobileMenu()" style="color:var(--teal-lt);margin-top:8px;">Let's talk</a>
+  <a href="#advisory" onclick="closeMobileMenu()">Working together</a>
+  <a href="#contact" onclick="closeMobileMenu()">Let's talk</a>
 </div>
 
 <nav id="nav">
-  <a class="nav-logo" href="#">
-    <div>
-      <div class="nav-logo-name">Marc J. Gigliotti</div>
-      <div class="nav-logo-sub">The Product Guy</div>
-    </div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#products">Products</a></li>
-    <li><a href="#advisory">Advisory</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta">Let's talk</a>
-  <button class="nav-hamburger" onclick="openMobileMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="wrap">
+    <a class="nav-name" href="#">Marc J. Gigliotti<small>The Product Guy</small></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#advisory">Working together</a></li>
+      <li><a href="#contact" class="btn">Let's talk</a></li>
+    </ul>
+    <button class="nav-toggle" onclick="openMobileMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
 </nav>
 
 <section id="hero">
-  <!-- Beautiful nautical visual: animated compass + ocean horizon -->
-  <div class="hero-visual">
-    <div class="hero-fade"></div>
-    <div class="compass-wrap">
-      <div class="compass-ring-outer"></div>
-      <div class="compass-ring-mid"></div>
-      <div class="compass-ring-inner"></div>
-      <div class="compass-ring-core"></div>
-      <!-- SVG compass rose inside -->
-      <svg class="compass-svg" viewBox="0 0 440 440" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Degree marks on outer ring -->
-        <g stroke="rgba(43,143,173,0.4)" stroke-width="1.5">
-          <line x1="220" y1="12" x2="220" y2="26"/>
-          <line x1="220" y1="414" x2="220" y2="428"/>
-          <line x1="12" y1="220" x2="26" y2="220"/>
-          <line x1="414" y1="220" x2="428" y2="220"/>
-        </g>
-        <g stroke="rgba(43,143,173,0.2)" stroke-width="0.8">
-          <line x1="331" y1="31" x2="323" y2="42"/>
-          <line x1="109" y1="31" x2="117" y2="42"/>
-          <line x1="331" y1="409" x2="323" y2="398"/>
-          <line x1="109" y1="409" x2="117" y2="398"/>
-          <line x1="409" y1="109" x2="398" y2="117"/>
-          <line x1="31" y1="109" x2="42" y2="117"/>
-          <line x1="409" y1="331" x2="398" y2="323"/>
-          <line x1="31" y1="331" x2="42" y2="323"/>
-        </g>
-        <!-- Cardinal text -->
-        <text x="220" y="52" text-anchor="middle" font-family="Plus Jakarta Sans" font-size="13" font-weight="700" letter-spacing="2" fill="rgba(255,255,255,0.55)">N</text>
-        <text x="220" y="404" text-anchor="middle" font-family="Plus Jakarta Sans" font-size="11" fill="rgba(255,255,255,0.25)">S</text>
-        <text x="400" y="225" text-anchor="middle" font-family="Plus Jakarta Sans" font-size="11" fill="rgba(255,255,255,0.25)">E</text>
-        <text x="40" y="225" text-anchor="middle" font-family="Plus Jakarta Sans" font-size="11" fill="rgba(255,255,255,0.25)">W</text>
-        <!-- Cross hairs through center -->
-        <line x1="220" y1="80" x2="220" y2="360" stroke="rgba(43,143,173,0.1)" stroke-width="1"/>
-        <line x1="80" y1="220" x2="360" y2="220" stroke="rgba(43,143,173,0.1)" stroke-width="1"/>
-        <!-- Diagonal cross hairs -->
-        <line x1="120" y1="120" x2="320" y2="320" stroke="rgba(43,143,173,0.07)" stroke-width="1"/>
-        <line x1="320" y1="120" x2="120" y2="320" stroke="rgba(43,143,173,0.07)" stroke-width="1"/>
-        <!-- North needle, bold white -->
-        <path d="M220 80 L226 190 L220 210 L214 190 Z" fill="rgba(255,255,255,0.9)"/>
-        <!-- South needle, faint teal -->
-        <path d="M220 360 L214 250 L220 230 L226 250 Z" fill="rgba(43,143,173,0.5)"/>
-        <!-- East/West small diamonds -->
-        <path d="M360 220 L335 215 L325 220 L335 225 Z" fill="rgba(43,143,173,0.35)"/>
-        <path d="M80 220 L105 215 L115 220 L105 225 Z" fill="rgba(43,143,173,0.35)"/>
-        <!-- Center jewel -->
-        <circle cx="220" cy="220" r="12" fill="rgba(13,27,46,0.8)" stroke="rgba(43,143,173,0.6)" stroke-width="1.5"/>
-        <circle cx="220" cy="220" r="5" fill="var(--teal-lt)"/>
-        <circle cx="220" cy="220" r="2" fill="rgba(255,255,255,0.9)"/>
-        <!-- Decorative inner star points -->
-        <path d="M220 168 L223 190 L220 198 L217 190 Z" fill="rgba(255,255,255,0.3)"/>
-        <path d="M272 220 L250 223 L242 220 L250 217 Z" fill="rgba(43,143,173,0.3)"/>
-        <path d="M220 272 L217 250 L220 242 L223 250 Z" fill="rgba(43,143,173,0.3)"/>
-        <path d="M168 220 L190 217 L198 220 L190 223 Z" fill="rgba(43,143,173,0.3)"/>
-      </svg>
+  <div class="wrap hero-grid">
+    <div>
+      <p class="hero-hello">Hey, I'm Marc.</p>
+      <h1 class="hero-h1">I build products, and the businesses behind&nbsp;them.</h1>
+      <p class="hero-sub"><strong>18 years building products at MoneyLion, Fidelity, Reebok and my own ventures.</strong> I'm happiest early on: figuring out what's worth building, shipping it and turning it into a real business.</p>
+      <div class="hero-ctas">
+        <a href="#advisory" class="btn">Work with me</a>
+        <a href="#work">See my track record</a>
+      </div>
     </div>
-    <!-- Ocean horizon waves at bottom -->
-    <div class="horizon">
-      <svg class="wave-svg wave-1" viewBox="0 0 1440 200" preserveAspectRatio="none">
-        <path d="M0 80 C180 40 360 120 540 80 C720 40 900 120 1080 80 C1260 40 1440 120 1440 80 L1440 200 L0 200 Z" fill="white"/>
-        <path d="M0 100 C200 60 400 130 600 100 C800 70 1000 130 1200 100 C1320 82 1380 95 1440 100 L1440 200 L0 200 Z" fill="white" opacity="0.5"/>
-      </svg>
-      <svg class="wave-svg wave-2" viewBox="0 0 1440 200" preserveAspectRatio="none">
-        <path d="M0 90 C160 50 320 130 480 90 C640 50 800 130 960 90 C1120 50 1280 130 1440 90 L1440 200 L0 200 Z" fill="white"/>
-      </svg>
+    <div class="compass">
+      <svg viewBox="0 0 440 440" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="220" cy="220" r="210" stroke="rgba(43,143,173,0.28)"/>
+          <circle cx="220" cy="220" r="182" stroke="rgba(43,143,173,0.2)" stroke-dasharray="3 5"/>
+          <circle cx="220" cy="220" r="140" stroke="rgba(43,143,173,0.32)" stroke-width="1.5"/>
+          <circle cx="220" cy="220" r="70" stroke="rgba(43,143,173,0.22)"/>
+          <g stroke="rgba(43,143,173,0.45)" stroke-width="1.5">
+            <line x1="220" y1="12" x2="220" y2="26"/><line x1="220" y1="414" x2="220" y2="428"/>
+            <line x1="12" y1="220" x2="26" y2="220"/><line x1="414" y1="220" x2="428" y2="220"/>
+          </g>
+          <g stroke="rgba(43,143,173,0.22)" stroke-width="0.8">
+            <line x1="331" y1="31" x2="323" y2="42"/><line x1="109" y1="31" x2="117" y2="42"/>
+            <line x1="331" y1="409" x2="323" y2="398"/><line x1="109" y1="409" x2="117" y2="398"/>
+            <line x1="409" y1="109" x2="398" y2="117"/><line x1="31" y1="109" x2="42" y2="117"/>
+            <line x1="409" y1="331" x2="398" y2="323"/><line x1="31" y1="331" x2="42" y2="323"/>
+          </g>
+          <text x="220" y="54" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="15" font-weight="600" fill="rgba(255,255,255,0.7)">N</text>
+          <text x="220" y="402" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="13" fill="rgba(255,255,255,0.3)">S</text>
+          <text x="398" y="225" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="13" fill="rgba(255,255,255,0.3)">E</text>
+          <text x="42" y="225" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="13" fill="rgba(255,255,255,0.3)">W</text>
+          <line x1="220" y1="80" x2="220" y2="360" stroke="rgba(43,143,173,0.12)"/>
+          <line x1="80" y1="220" x2="360" y2="220" stroke="rgba(43,143,173,0.12)"/>
+          <path d="M220 80 L226 190 L220 210 L214 190 Z" fill="rgba(255,255,255,0.92)"/>
+          <path d="M220 360 L214 250 L220 230 L226 250 Z" fill="rgba(43,143,173,0.55)"/>
+          <path d="M360 220 L335 215 L325 220 L335 225 Z" fill="rgba(43,143,173,0.4)"/>
+          <path d="M80 220 L105 215 L115 220 L105 225 Z" fill="rgba(43,143,173,0.4)"/>
+          <circle cx="220" cy="220" r="12" fill="#14294A" stroke="rgba(43,143,173,0.6)" stroke-width="1.5"/>
+          <circle cx="220" cy="220" r="5" fill="#2B8FAD"/>
+          <circle cx="220" cy="220" r="2" fill="#fff"/>
+        </svg>
     </div>
+    <ul class="hero-facts">
+      <li><b>50+</b>products launched</li>
+      <li><b>$1B</b>acquisition led</li>
+      <li><b>18+</b>years operating</li>
+      <li><b>5</b>Fortune 500 companies</li>
+    </ul>
   </div>
-
-  <div class="hero-content">
-    <div class="hero-kicker"><span class="hero-kicker-line"></span>Hey, I'm Marc</div>
-    <h1 class="hero-h1">I build products,<br><span class="accent">and the businesses behind&nbsp;them.</span></h1>
-    <p class="hero-sub"><strong>18 years building products at MoneyLion, Fidelity, Reebok and my own ventures.</strong> I'm happiest early on: figuring out what's worth building, shipping it and turning it into a real business.</p>
-    <div class="hero-ctas">
-      <a href="#advisory" class="btn-primary">Work with me <svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      <a href="#work" class="btn-ghost">My track record</a>
-    </div>
-  </div>
-
-  <div class="hero-stats">
-    <div class="hs"><div class="hs-num">50+</div><div class="hs-label">Products Launched</div></div>
-    <div class="hs"><div class="hs-num">$1B</div><div class="hs-label">Acquisition Led</div></div>
-    <div class="hs"><div class="hs-num">18+</div><div class="hs-label">Years Operating</div></div>
-    <div class="hs"><div class="hs-num">5</div><div class="hs-label">Fortune 500 Companies</div></div>
+  <div class="hero-waves" aria-hidden="true">
+    <svg viewBox="0 0 2880 80" preserveAspectRatio="none"><path d="M0 38 C180 24 270 24 360 38 C450 52 540 52 720 38 C900 24 990 24 1080 38 C1170 52 1260 52 1440 38 C1620 24 1710 24 1800 38 C1890 52 1980 52 2160 38 C2340 24 2430 24 2520 38 C2610 52 2700 52 2880 38 L2880 80 L0 80 Z" fill="rgba(255,255,255,0.05)"/></svg>
+    <svg viewBox="0 0 2880 80" preserveAspectRatio="none"><path d="M0 52 C120 42 180 42 240 52 C300 62 360 62 480 52 C600 42 660 42 720 52 C780 62 840 62 960 52 C1080 42 1140 42 1200 52 C1260 62 1320 62 1440 52 C1560 42 1620 42 1680 52 C1740 62 1800 62 1920 52 C2040 42 2100 42 2160 52 C2220 62 2280 62 2400 52 C2520 42 2580 42 2640 52 C2700 62 2760 62 2880 52 L2880 80 L0 80 Z" fill="rgba(255,255,255,0.04)"/></svg>
   </div>
 </section>
 
-<div class="nautical-divider">
-  <div class="nd-line"></div>
-  <div class="nd-icon"><svg width="20" height="20" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="5" r="2.5" stroke="currentColor" stroke-width="1.3"/><line x1="11" y1="7.5" x2="11" y2="18" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M5 11C3 11 3 13 3 13C3 15 5 16 7 15.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M17 11C19 11 19 13 19 13C19 15 17 16 15 15.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M7.5 18L11 20L14.5 18" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-  <div class="nd-line"></div>
-</div>
-
 <section id="about">
-  <div class="sec-label reveal"><span class="sec-label-line"></span>About</div>
-  <div class="about-layout">
-    <div class="about-left">
-      <div class="about-avatar"><img src="/marc-gigliotti.webp" alt="Illustrated avatar of Marc J. Gigliotti" width="148" height="148" loading="lazy" decoding="async"/></div>
-      <div class="about-pull reveal">I run product like a GM. The roadmap is one piece of it. The customer, the team and the numbers are the rest.</div>
-      <div class="about-body reveal">
+  <div class="wrap about-grid">
+    <div>
+      <h2 class="sr-only">About</h2>
+      <div class="about-avatar"><img src="/marc-gigliotti.webp" alt="Illustrated avatar of Marc J. Gigliotti" width="112" height="112" loading="lazy" decoding="async"></div>
+      <p class="about-pull">I run product like a GM. The roadmap is one piece of it. The customer, the team and the numbers are the rest.</p>
+      <div class="about-body">
         <p>I'm a <strong>product leader, founder and operator</strong>. For 18 years I've been taking messy, high-stakes problems and turning them into products that scale, mostly in consumer, fintech and AI.</p>
         <p>I've done it inside big companies (<strong>MoneyLion / GEN Digital, Fidelity Investments, CVS Health, Reebok / adidas Group and Kaspersky Lab</strong>) and right alongside early-stage founders.</p>
         <p>The approach doesn't change with the size of the company. Stay close to the customer, move fast, let the data settle the debates, and have some fun doing it.</p>
-        <div class="skills-wrap">
-          <span class="skill">Product Strategy</span><span class="skill">0 to 1</span><span class="skill">Growth</span><span class="skill">AI Products</span><span class="skill">Fintech</span><span class="skill">Consumer</span><span class="skill">B2B / B2C</span><span class="skill">Personalization</span><span class="skill">Monetization</span><span class="skill">Go-to-Market</span><span class="skill">Data &amp; Experimentation</span><span class="skill">UX / UI</span><span class="skill">Agile / Scrum</span><span class="skill">Leadership / Operations</span>
-        </div>
+        <p class="strengths"><strong>Things I know well:</strong> product strategy, 0 to 1, growth, AI products, fintech, consumer, B2B and B2C, personalization, monetization, go-to-market, data and experimentation, UX and UI, Agile and Scrum, and leadership and operations.</p>
       </div>
     </div>
-    <div class="about-aside reveal">
-      <div class="aside-row"><div class="aside-lbl">Education</div><div class="aside-val">MBA, General Management</div><div class="aside-sub">Manning School of Business, UMass Lowell &middot; 2009 to 2012</div><br><div class="aside-val">BS, Business Administration</div><div class="aside-sub">Salve Regina University &middot; 2003 to 2007</div><div class="aside-sub" style="margin-top:3px;">Minor: Management Information Systems &middot; American Marketing Association</div><br><div class="aside-val">High School Diploma</div><div class="aside-sub">Austin Preparatory School &middot; 1999 to 2003</div></div>
-      <div class="aside-row"><div class="aside-lbl">Certifications</div><div class="aside-val">Certified Scrum Product Owner</div><div class="aside-sub">Scrum Alliance</div><br><div class="aside-val">Outcome Driven Innovation</div><div class="aside-sub">Strategyn</div><br><div class="aside-val">Behavioral Economics and Neuromarketing</div><div class="aside-sub">Udemy</div></div>
-      <div class="aside-row"><div class="aside-lbl">Recognition</div><div class="aside-val">adidas Group Global IT CIO Innovation Award</div><div class="aside-sub">2012</div><br><div class="aside-val">Fidelity Excellence in Action</div><div class="aside-sub">Q3 2020 and Q2 2021</div><br><div class="aside-val">Reebok Employee Recognition Award</div><div class="aside-sub">Q4 2013</div></div>
-      <div class="aside-row"><div class="aside-lbl">Giving Back</div><div class="aside-val">Addy's Army: ~$50k raised</div><div class="aside-sub">For Boston Children's Hospital and Dana-Farber Cancer Institute</div></div>
-    </div>
+    <aside>
+      <div class="aside-group">
+        <h3>Education</h3>
+        <ul>
+          <li><b>MBA, General Management</b><span>Manning School of Business, UMass Lowell, 2009 to 2012</span></li>
+          <li><b>BS, Business Administration</b><span>Salve Regina University, 2003 to 2007</span><span>Minor in Management Information Systems. American Marketing Association.</span></li>
+          <li><b>High School Diploma</b><span>Austin Preparatory School, 1999 to 2003</span></li>
+        </ul>
+      </div>
+      <div class="aside-group">
+        <h3>Certifications</h3>
+        <ul>
+          <li><b>Certified Scrum Product Owner</b><span>Scrum Alliance</span></li>
+          <li><b>Outcome Driven Innovation</b><span>Strategyn</span></li>
+          <li><b>Behavioral Economics and Neuromarketing</b><span>Udemy</span></li>
+        </ul>
+      </div>
+      <div class="aside-group">
+        <h3>Recognition</h3>
+        <ul>
+          <li><b>adidas Group Global IT CIO Innovation Award</b><span>2012</span></li>
+          <li><b>Fidelity Excellence in Action</b><span>Q3 2020 and Q2 2021</span></li>
+          <li><b>Reebok Employee Recognition Award</b><span>Q4 2013</span></li>
+        </ul>
+      </div>
+      <div class="aside-group">
+        <h3>Giving back</h3>
+        <ul>
+          <li><b>Addy's Army: ~$50k raised</b><span>For Boston Children's Hospital and Dana-Farber Cancer Institute</span></li>
+        </ul>
+      </div>
+    </aside>
   </div>
 </section>
 
 <section id="work">
-  <div class="sec-label reveal"><span class="sec-label-line"></span>Experience</div>
-  <h2 class="sec-h reveal">Where I've worked</h2>
-  <div class="work-timeline">
+  <div class="wrap">
+    <h2>Where I've worked</h2>
 
-    <div class="wt reveal">
-      <div class="wt-left">
-        <div class="wt-co">MoneyLion / GEN Digital</div>
-        <div class="wt-era">2022 to Present</div>
-        <div class="wt-stats">
-          <div class="wts"><span class="wts-num">20x</span><span class="wts-lbl">Revenue Growth</span></div>
-          <div class="wts"><span class="wts-num">$1B</span><span class="wts-lbl">Exit Value</span></div>
-          <div class="wts"><span class="wts-num">6</span><span class="wts-lbl">Product Areas</span></div>
-        </div>
+    <div class="job">
+      <div>
+        <h3 class="job-co">MoneyLion / GEN Digital</h3>
+        <p class="job-years">2022 to present</p>
+        <ul class="job-stats">
+          <li><b>20x</b>revenue growth</li>
+          <li><b>$1B</b>exit value</li>
+          <li><b>6</b>product areas</li>
+        </ul>
       </div>
-      <div class="wt-right">
-        <div class="wt-role">VP of Product: Discover, Credit Monitoring, Community, Investing, Personal Finance and B2B Content</div>
-        <div class="wt-body">I owned the consumer product suite. We rebuilt Discover and grew its revenue 20x, took Credit Monitoring and Community from 0 to 1, and launched Active Investing and a B2B content feed. Six product areas, all running at once.</div>
-        <div class="wt-win"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 4L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Led the consumer product suite to a $1B acquisition by GEN Digital</div>
+      <div>
+        <p class="job-role">VP of Product: Discover, Credit Monitoring, Community, Investing, Personal Finance and B2B Content</p>
+        <p>I owned the consumer product suite. We rebuilt Discover and grew its revenue 20x, took Credit Monitoring and Community from 0 to 1, and launched Active Investing and a B2B content feed. Six product areas, all running at once.</p>
+        <p class="job-win">Led the consumer product suite to a $1B acquisition by GEN Digital.</p>
       </div>
     </div>
 
-    <div class="wt reveal">
-      <div class="wt-left">
-        <div class="wt-co">Fidelity Investments</div>
-        <div class="wt-era">2018 to 2022</div>
-        <div class="wt-stats">
-          <div class="wts"><span class="wts-num">$7B</span><span class="wts-lbl">Under Management</span></div>
-          <div class="wts"><span class="wts-num">2x</span><span class="wts-lbl">Excellence Awards</span></div>
-        </div>
+    <div class="job">
+      <div>
+        <h3 class="job-co">Fidelity Investments</h3>
+        <p class="job-years">2018 to 2022</p>
+        <ul class="job-stats">
+          <li><b>$7B</b>under management</li>
+          <li><b>2x</b>excellence awards</li>
+        </ul>
       </div>
-      <div class="wt-right">
-        <div class="wt-role">Director, Product and Strategy: Digital Advice and Wealth Management</div>
-        <div class="wt-body">Product lead for FidelityGo and Fidelity Personalized Planning and Advice, a hybrid robo-advisor with $7B under management. I built the full post-enrollment experience, the mobile communications strategy and the wealth management journey maps.</div>
-        <div class="wt-win"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 4L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Fidelity Excellence in Action Award, twice (Q3 2020 and Q2 2021)</div>
-      </div>
-    </div>
-
-    <div class="wt reveal">
-      <div class="wt-left">
-        <div class="wt-co">Kaspersky Lab</div>
-        <div class="wt-era">2017 to 2018</div>
-        <div class="wt-stats">
-          <div class="wts"><span class="wts-num">2</span><span class="wts-lbl">Regions Led</span></div>
-        </div>
-      </div>
-      <div class="wt-right">
-        <div class="wt-role">Head of Digital Marketing and Product, North America and Latin America</div>
-        <div class="wt-body">Ran digital marketing and product for North and Latin America across the business and consumer lines. I built the multi-year regional roadmaps, ran paid media, search and social, and consistently beat our return-on-ad-spend and growth targets.</div>
+      <div>
+        <p class="job-role">Director, Product and Strategy: Digital Advice and Wealth Management</p>
+        <p>Product lead for FidelityGo and Fidelity Personalized Planning and Advice, a hybrid robo-advisor with $7B under management. I built the full post-enrollment experience, the mobile communications strategy and the wealth management journey maps.</p>
+        <p class="job-win">Fidelity Excellence in Action Award, twice (Q3 2020 and Q2 2021).</p>
       </div>
     </div>
 
-    <div class="wt reveal">
-      <div class="wt-left">
-        <div class="wt-co">CVS Health</div>
-        <div class="wt-era">2015 to 2017</div>
-        <div class="wt-stats">
-          <div class="wts"><span class="wts-num">100+</span><span class="wts-lbl">Projects / Year</span></div>
-          <div class="wts"><span class="wts-num">7</span><span class="wts-lbl">Portfolios Owned</span></div>
-        </div>
+    <div class="job">
+      <div>
+        <h3 class="job-co">Kaspersky Lab</h3>
+        <p class="job-years">2017 to 2018</p>
+        <ul class="job-stats">
+          <li><b>2</b>regions led</li>
+        </ul>
       </div>
-      <div class="wt-right">
-        <div class="wt-role">Senior Manager, Digital Experience Production and Operations</div>
-        <div class="wt-body">Built and led the team of digital producers inside CVS's Digital Innovation Lab. We delivered 100+ projects a year across a multi-billion-dollar portfolio, and I owned 7 healthcare portfolios at once.</div>
-      </div>
-    </div>
-
-    <div class="wt reveal">
-      <div class="wt-left">
-        <div class="wt-co">Reebok / adidas</div>
-        <div class="wt-era">2011 to 2015</div>
-        <div class="wt-stats">
-          <div class="wts"><span class="wts-num">150k+</span><span class="wts-lbl">Active Users</span></div>
-          <div class="wts"><span class="wts-num">$10M+</span><span class="wts-lbl">Net Sales</span></div>
-          <div class="wts"><span class="wts-num">20+</span><span class="wts-lbl">Countries</span></div>
-        </div>
-      </div>
-      <div class="wt-right">
-        <div class="wt-role">Senior Manager, Global Digital Product Owner</div>
-        <div class="wt-body">Took ReebokONE from a concept to a platform in 20+ countries with 150k+ active fitness pros and $10M+ in net sales. Reebok named it a top 10 strategic pillar, and Fast Company recognized it as Reebok's biggest-ever contribution to the fitness world.</div>
-        <div class="wt-win"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 4L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>adidas Global CIO Innovation Award · Reebok Employee Recognition Q4 2013</div>
+      <div>
+        <p class="job-role">Head of Digital Marketing and Product, North America and Latin America</p>
+        <p>Ran digital marketing and product for North and Latin America across the business and consumer lines. I built the multi-year regional roadmaps, ran paid media, search and social, and consistently beat our return-on-ad-spend and growth targets.</p>
       </div>
     </div>
 
+    <div class="job">
+      <div>
+        <h3 class="job-co">CVS Health</h3>
+        <p class="job-years">2015 to 2017</p>
+        <ul class="job-stats">
+          <li><b>100+</b>projects a year</li>
+          <li><b>7</b>portfolios owned</li>
+        </ul>
+      </div>
+      <div>
+        <p class="job-role">Senior Manager, Digital Experience Production and Operations</p>
+        <p>Built and led the team of digital producers inside CVS's Digital Innovation Lab. We delivered 100+ projects a year across a multi-billion-dollar portfolio, and I owned 7 healthcare portfolios at once.</p>
+      </div>
+    </div>
+
+    <div class="job">
+      <div>
+        <h3 class="job-co">Reebok / adidas</h3>
+        <p class="job-years">2011 to 2015</p>
+        <ul class="job-stats">
+          <li><b>150k+</b>active users</li>
+          <li><b>$10M+</b>net sales</li>
+          <li><b>20+</b>countries</li>
+        </ul>
+      </div>
+      <div>
+        <p class="job-role">Senior Manager, Global Digital Product Owner</p>
+        <p>Took ReebokONE from a concept to a platform in 20+ countries with 150k+ active fitness pros and $10M+ in net sales. Reebok named it a top 10 strategic pillar, and Fast Company recognized it as Reebok's biggest-ever contribution to the fitness world.</p>
+        <p class="job-win">adidas Global CIO Innovation Award and Reebok Employee Recognition (Q4 2013).</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <section id="products">
-  <div class="products-header">
-    <div>
-      <div class="sec-label reveal"><span class="sec-label-line"></span>Products</div>
-      <h2 class="sec-h reveal" style="margin-bottom:0;">A few things I've built</h2>
+  <div class="wrap">
+    <h2>A few things I've built</h2>
+
+    <div class="prod">
+      <div><h3 class="prod-name">MoneyLion Discover, Credit Monitoring and Community</h3><p class="prod-tag">Fintech, consumer</p></div>
+      <p class="prod-desc">Rebuilt Discover from the ground up and launched Credit Monitoring and Community from scratch. Personalization and a lot of testing grew Discover's revenue 20x. Core team behind the $1B exit.</p>
+      <div class="prod-meta">Acquired, $1B<br><a href="https://www.moneylion.com" target="_blank" rel="noopener">moneylion.com</a></div>
     </div>
-    <div class="products-launch-visual reveal">
-      <svg class="plv-svg" viewBox="0 0 160 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="beamG" cx="0%" cy="50%" r="100%" fx="0%" fy="50%">
-            <stop offset="0%" stop-color="#1A6B8A" stop-opacity="0.3"/>
-            <stop offset="100%" stop-color="#1A6B8A" stop-opacity="0"/>
-          </radialGradient>
-          <clipPath id="bClip"><rect x="0" y="0" width="160" height="88"/></clipPath>
-        </defs>
 
-        <!-- Beam, sweeps from lighthouse top -->
-        <g class="lh-beam" clip-path="url(#bClip)">
-          <path d="M80 38 L160 0 L160 76 Z" fill="url(#beamG)"/>
-        </g>
-
-        <!-- Lighthouse body -->
-        <!-- Base platform -->
-        <rect x="66" y="80" width="28" height="5" rx="2" fill="rgba(26,107,138,0.3)"/>
-        <!-- Tower -->
-        <path d="M71 80 L73 46 L87 46 L89 80 Z" fill="rgba(26,107,138,0.2)" stroke="rgba(26,107,138,0.4)" stroke-width="1"/>
-        <!-- Stripe bands -->
-        <rect x="73" y="58" width="14" height="5" rx="0.5" fill="rgba(26,107,138,0.15)"/>
-        <rect x="73" y="68" width="14" height="5" rx="0.5" fill="rgba(26,107,138,0.15)"/>
-        <!-- Lantern room -->
-        <rect x="72" y="38" width="16" height="10" rx="2" fill="rgba(26,107,138,0.25)" stroke="rgba(26,107,138,0.45)" stroke-width="1"/>
-        <!-- Light glow -->
-        <circle class="lh-light" cx="80" cy="43" r="4" fill="rgba(26,107,138,0.7)"/>
-        <circle class="lh-light" cx="80" cy="43" r="2" fill="rgba(255,255,255,0.9)"/>
-        <!-- Roof cap -->
-        <path d="M72 38 L80 32 L88 38 Z" fill="rgba(26,107,138,0.4)"/>
-        <!-- Railing line -->
-        <line x1="70" y1="46" x2="90" y2="46" stroke="rgba(26,107,138,0.4)" stroke-width="1.2" stroke-linecap="round"/>
-
-        <!-- Subtle water line -->
-        <path d="M0 84 C20 80 40 88 60 84 C80 80 100 88 120 84 C140 80 160 88 160 84" stroke="rgba(26,107,138,0.15)" stroke-width="1" fill="none" stroke-linecap="round"/>
-      </svg>
+    <div class="prod">
+      <div><h3 class="prod-name">Forsured</h3><p class="prod-tag">Insurance, construction</p></div>
+      <p class="prod-desc">Insurance compliance for construction. Forsured tracks subcontractor insurance certificates for general contractors, subs and brokers, so coverage gaps get caught early instead of after something goes wrong. Built 0 to 1, launched at ENR FutureTech 2026 and live with its first customers.</p>
+      <div class="prod-meta">Live, built 0 to 1<br><a href="https://www.forsured.com" target="_blank" rel="noopener">forsured.com</a></div>
     </div>
-  </div>
-  <div style="height:40px;"></div>
-  <div class="products-list">
-    <div class="prod-row reveal"><div><div class="prod-tag">Fintech / Consumer</div><div class="prod-name">MoneyLion Discover, Credit Monitoring and Community</div></div><div class="prod-desc">Rebuilt Discover from the ground up and launched Credit Monitoring and Community from scratch. Personalization and a lot of testing grew Discover's revenue 20x. Core team behind the $1B exit.</div><div class="prod-right"><div class="prod-stage">Acquired / $1B</div><a href="https://www.moneylion.com" target="_blank" rel="noopener" aria-label="Visit MoneyLion" class="prod-link">Visit<span class="sr-only"> MoneyLion</span> <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5h9M6 1l3.5 3.5L6 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div>
-    <div class="prod-row reveal"><div><div class="prod-tag">Insurance / Construction</div><div class="prod-name">Forsured</div></div><div class="prod-desc">Insurance compliance for construction. Forsured tracks subcontractor insurance certificates for general contractors, subs and brokers, so coverage gaps get caught early instead of after something goes wrong. Built 0 to 1, launched at ENR FutureTech 2026 and live with its first customers.</div><div class="prod-right"><div class="prod-stage">Live / 0 to 1</div><a href="https://www.forsured.com" target="_blank" rel="noopener" aria-label="Visit Forsured" class="prod-link">Visit<span class="sr-only"> Forsured</span> <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5h9M6 1l3.5 3.5L6 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div>
-    <div class="prod-row reveal"><div><div class="prod-tag">Fintech / B2B2C</div><div class="prod-name">B2B2C Content Feed</div></div><div class="prod-desc">MoneyLion's personalized content feed, packaged so financial brands can run it inside their own apps. Stifel launched it as Stifel Discover, and other financial partners use it too.</div><div class="prod-right"><div class="prod-stage">Live / Revenue</div><a href="https://www.stifel.com/docs/pdf/pressreleases/2025/Stifel_Introduces_Stifel-Discover.pdf" target="_blank" rel="noopener" aria-label="Read the Stifel press release on the B2B2C content feed" class="prod-link">Press<span class="sr-only">: Stifel press release on the B2B2C content feed</span> <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5h9M6 1l3.5 3.5L6 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div>
-    <div class="prod-row reveal"><div><div class="prod-tag">Fintech / Investing</div><div class="prod-name">Active Investing</div></div><div class="prod-desc">Built MoneyLion's Active Investing from 0 to 1, with single stock and ETF trading. I owned it end to end, from strategy and design through engineering and launch.</div><div class="prod-right"><div class="prod-stage">Live / 0 to 1</div><a href="https://help.moneylion.com/what-is-the-active-investing-account-HkzEeeggkx" target="_blank" rel="noopener" aria-label="Learn more about MoneyLion Active Investing" class="prod-link">Learn More<span class="sr-only"> about MoneyLion Active Investing</span> <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5h9M6 1l3.5 3.5L6 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div>
-    <div class="prod-row reveal"><div><div class="prod-tag">AI / Investing</div><div class="prod-name">Trendsendent</div></div><div class="prod-desc">Investment research that uses AI to pick up early signals across consumer categories. Built through Joppa Digital. It's live and we're still building.</div><div class="prod-right"><div class="prod-stage">Live</div><a href="https://www.trendsendent.ai" target="_blank" rel="noopener" aria-label="Visit Trendsendent" class="prod-link">Visit<span class="sr-only"> Trendsendent</span> <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5h9M6 1l3.5 3.5L6 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div>
-    <div class="prod-row reveal"><div><div class="prod-tag">AI / Education</div><div class="prod-name">EducatorIQ</div></div><div class="prod-desc">An AI tool that helps educators plan lessons, teach and see what's actually working. In development through Joppa Digital.</div><div class="prod-right"><div class="prod-stage">In Development</div></div></div>
-    <div class="prod-row reveal"><div><div class="prod-tag">DTC / Events</div><div class="prod-name">Petal &amp; Stem Blooms</div></div><div class="prod-desc">A bloom bar for showers, parties and events, where guests build their own hand-tied bouquets from seasonal flowers. I designed, built and launched the direct-to-consumer site end to end.</div><div class="prod-right"><div class="prod-stage">Live / DTC</div><a href="https://petalandstemblooms.com" target="_blank" rel="noopener" aria-label="Visit Petal &amp; Stem Blooms" class="prod-link">Visit<span class="sr-only"> Petal &amp; Stem Blooms</span> <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5h9M6 1l3.5 3.5L6 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div>
-    <div class="prod-row reveal"><div><div class="prod-tag">Fitness / Global</div><div class="prod-name">ReebokONE</div></div><div class="prod-desc">A platform for fitness pros, built from zero to 20+ markets, 150k+ users and $10M+ in net sales. It became one of Reebok's top 10 strategic pillars.</div><div class="prod-right"><div class="prod-stage">adidas Group</div><a href="https://www.fastcompany.com/3026316/the-worlds-top-10-most-innovative-companies-in-fitness" target="_blank" rel="noopener" aria-label="Read Fast Company on ReebokONE" class="prod-link">Press<span class="sr-only">: Fast Company on ReebokONE</span> <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5h9M6 1l3.5 3.5L6 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div>
+
+    <div class="prod">
+      <div><h3 class="prod-name">B2B2C Content Feed</h3><p class="prod-tag">Fintech, B2B2C</p></div>
+      <p class="prod-desc">MoneyLion's personalized content feed, packaged so financial brands can run it inside their own apps. Stifel launched it as Stifel Discover, and other financial partners use it too.</p>
+      <div class="prod-meta">Live, earning revenue<br><a href="https://www.stifel.com/docs/pdf/pressreleases/2025/Stifel_Introduces_Stifel-Discover.pdf" target="_blank" rel="noopener">Stifel's announcement</a></div>
+    </div>
+
+    <div class="prod">
+      <div><h3 class="prod-name">Active Investing</h3><p class="prod-tag">Fintech, investing</p></div>
+      <p class="prod-desc">Built MoneyLion's Active Investing from 0 to 1, with single stock and ETF trading. I owned it end to end, from strategy and design through engineering and launch.</p>
+      <div class="prod-meta">Live, built 0 to 1<br><a href="https://help.moneylion.com/what-is-the-active-investing-account-HkzEeeggkx" target="_blank" rel="noopener">How it works</a></div>
+    </div>
+
+    <div class="prod">
+      <div><h3 class="prod-name">Trendsendent</h3><p class="prod-tag">AI, investing</p></div>
+      <p class="prod-desc">Investment research that uses AI to pick up early signals across consumer categories. Built through Joppa Digital. It's live and we're still building.</p>
+      <div class="prod-meta">Live<br><a href="https://www.trendsendent.ai" target="_blank" rel="noopener">trendsendent.ai</a></div>
+    </div>
+
+    <div class="prod">
+      <div><h3 class="prod-name">EducatorIQ</h3><p class="prod-tag">AI, education</p></div>
+      <p class="prod-desc">An AI tool that helps educators plan lessons, teach and see what's actually working. In development through Joppa Digital.</p>
+      <div class="prod-meta">In development</div>
+    </div>
+
+    <div class="prod">
+      <div><h3 class="prod-name">Petal &amp; Stem Blooms</h3><p class="prod-tag">Direct to consumer, events</p></div>
+      <p class="prod-desc">A bloom bar for showers, parties and events, where guests build their own hand-tied bouquets from seasonal flowers. I designed, built and launched the direct-to-consumer site end to end.</p>
+      <div class="prod-meta">Live<br><a href="https://petalandstemblooms.com" target="_blank" rel="noopener">petalandstemblooms.com</a></div>
+    </div>
+
+    <div class="prod">
+      <div><h3 class="prod-name">ReebokONE</h3><p class="prod-tag">Fitness, global</p></div>
+      <p class="prod-desc">A platform for fitness pros, built from zero to 20+ markets, 150k+ users and $10M+ in net sales. It became one of Reebok's top 10 strategic pillars.</p>
+      <div class="prod-meta">adidas Group<br><a href="https://www.fastcompany.com/3026316/the-worlds-top-10-most-innovative-companies-in-fitness" target="_blank" rel="noopener">Fast Company</a></div>
+    </div>
   </div>
 </section>
 
-<div class="band reveal">
-  <!-- Sunset atmosphere layers -->
-  <div class="band-sun"></div>
-  <div class="band-horizon"></div>
-  <div class="band-waves">
-    <svg class="bw1" viewBox="0 0 1440 120" preserveAspectRatio="none">
-      <path d="M0 60 C120 40 240 80 360 60 C480 40 600 80 720 60 C840 40 960 80 1080 60 C1200 40 1320 80 1440 60 C1560 40 1680 80 1800 60 C1920 40 2040 80 2160 60 C2280 40 2400 80 2520 60 C2640 40 2760 80 2880 60 L2880 120 L0 120Z" fill="rgba(43,143,173,0.4)"/>
-    </svg>
-    <svg class="bw2" viewBox="0 0 1440 120" preserveAspectRatio="none">
-      <path d="M0 70 C180 50 360 90 540 70 C720 50 900 90 1080 70 C1260 50 1440 90 1620 70 C1800 50 1980 90 2160 70 C2340 50 2520 90 2700 70 C2880 50 2880 90 2880 70 L2880 120 L0 120Z" fill="rgba(26,107,138,0.35)"/>
-    </svg>
-    <svg class="bw3" viewBox="0 0 1440 120" preserveAspectRatio="none">
-      <path d="M0 80 C240 65 480 95 720 80 C960 65 1200 95 1440 80 C1680 65 1920 95 2160 80 C2400 65 2640 95 2880 80 L2880 120 L0 120Z" fill="rgba(13,36,56,0.6)"/>
-    </svg>
-  </div>
-  <!-- Content -->
-  <div class="band-content">
-    <div class="band-label"><span class="band-label-line"></span>How I can help</div>
-    <h2 class="band-h">Four ways we can work&nbsp;together.</h2>
-    <div class="services">
-      <div class="svc"><div class="svc-top"><div class="svc-icon"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 1L9 5.5H14L10 8.5L11.5 13L7.5 10L3.5 13L5 8.5L1 5.5H6L7.5 1Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></div></div><div class="svc-title">Product Leadership</div><div class="svc-body">Fractional CPO or VP-level help for startups and growth-stage companies. Strategy, roadmap, team setup, and making sure it actually ships.</div></div>
-      <div class="svc"><div class="svc-top"><div class="svc-icon"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M1 11L5 7L8 9.5L13 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><polyline points="10,3 13,3 13,6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div></div><div class="svc-title">0 to 1 Building</div><div class="svc-body">Idea to MVP to market. 50+ products shipped across fintech, AI, fitness, health and insurance.</div></div>
-      <div class="svc"><div class="svc-top"><div class="svc-icon"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.3"/><polyline points="7.5,4.5 7.5,7.5 10,9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div></div><div class="svc-title">Growth and Monetization</div><div class="svc-body">Revenue strategy, getting customers in, keeping them around and personalizing the experience, all tied to numbers you can track.</div></div>
-      <div class="svc"><div class="svc-top"><div class="svc-icon"><svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M1 13 L1 6 L5.5 3.5 L5.5 13" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 7 L9.5 5 L9.5 13" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.5 9 L13 8 L13 13" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><line x1="1" y1="13" x2="13" y2="13" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div></div><div class="svc-title">Studio Partnership</div><div class="svc-body">Full-service studio work through Joppa Product Studio, for teams that need to move fast and get it right.</div></div>
-    </div>
-  </div>
-</div>
-
 <section id="advisory">
-  <div class="sec-label reveal"><span class="sec-label-line"></span>Advisory and studio work</div>
-  <p class="adv-intro reveal">I work inside <strong>early-stage and growth-stage companies</strong> as a co-founder, CPO or advisor, in the weeds with the team week to week. Founders and investors bring me in when they want an operator in their corner.</p>
-  <div class="adv-grid">
-
-    <div class="adv-card reveal">
-      <div class="adv-icon">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2L16 7L9 12L2 7Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M2 10.5L9 15.5L16 10.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div class="wrap">
+    <h2>Working together</h2>
+    <p class="adv-intro">I work inside <strong>early-stage and growth-stage companies</strong> as a co-founder, CPO or advisor, in the weeds with the team week to week. Founders and investors bring me in when they want an operator in their corner.</p>
+    <div class="together">
+      <div>
+        <h3>How I can help</h3>
+        <dl class="help">
+          <dt>Product leadership</dt>
+          <dd>Fractional CPO or VP-level help for startups and growth-stage companies. Strategy, roadmap, team setup, and making sure it actually ships.</dd>
+          <dt>0 to 1 building</dt>
+          <dd>Idea to MVP to market. 50+ products shipped across fintech, AI, fitness, health and insurance.</dd>
+          <dt>Growth and monetization</dt>
+          <dd>Revenue strategy, getting customers in, keeping them around and personalizing the experience, all tied to numbers you can track.</dd>
+          <dt>Studio partnership</dt>
+          <dd>Full-service studio work through Joppa Product Studio, for teams that need to move fast and get it right.</dd>
+        </dl>
       </div>
-      <div class="adv-tag">Founder and CPO</div>
-      <div class="adv-name">Joppa Digital</div>
-      <div class="adv-role">February 2014 to Present</div>
-      <div class="adv-body">My product advisory and operating practice. I help companies of every size figure out what to build, then get it built and shipped.</div>
-      <div class="adv-footer"><div class="adv-dot"></div><div class="adv-status">12 Years Running</div></div>
-    </div>
-
-    <div class="adv-card reveal">
-      <div class="adv-icon">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M10.5 2L4 10h5.5L7.5 16l7-8.5H9L10.5 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+      <div>
+        <h3>Where I'm doing it</h3>
+        <div class="role">
+          <h4>Joppa Digital</h4>
+          <p class="role-meta">Founder and CPO since February 2014</p>
+          <p>My product advisory and operating practice. I help companies of every size figure out what to build, then get it built and shipped.</p>
+        </div>
+        <div class="role">
+          <h4>Joppa Product Studio</h4>
+          <p class="role-meta">Founder and CPO, part of Joppa Digital</p>
+          <p>My product studio. I work with founders and investors from 0 to 1, 1 to 10 and 10 to 100, across consumer, fintech and enterprise.</p>
+        </div>
+        <div class="open-slot">
+          <h4>Room for 1 or 2 more</h4>
+          <p class="role-meta">Fractional CPO or strategic advisor</p>
+          <p>I have room for 1 or 2 more founders or investor-backed startups. If you want an experienced product lead on your side, <a href="#contact">let's talk</a>.</p>
+        </div>
       </div>
-      <div class="adv-tag">Founder and CPO</div>
-      <div class="adv-name">Joppa Product Studio</div>
-      <div class="adv-role">Part of Joppa Digital</div>
-      <div class="adv-body">My product studio. I work with founders and investors from 0 to 1, 1 to 10 and 10 to 100, across consumer, fintech and enterprise.</div>
-      <div class="adv-footer"><div class="adv-dot"></div><div class="adv-status">Building Now</div></div>
     </div>
-
-    <div class="adv-card open reveal">
-      <div class="adv-icon">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.3" stroke-dasharray="2.5 2"/><line x1="9" y1="5.5" x2="9" y2="12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="5.5" y1="9" x2="12.5" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </div>
-      <div class="adv-tag">Open Slot</div>
-      <div class="adv-name">Your Company</div>
-      <div class="adv-role">Fractional CPO / Strategic Advisory</div>
-      <div class="adv-body">I have room for 1 or 2 more founders or investor-backed startups. If you want an experienced product lead on your side, let's talk.</div>
-      <div class="adv-footer"><div class="adv-dot" style="background:var(--teal-lt);"></div><div class="adv-status">Limited Availability</div></div>
-    </div>
-
   </div>
 </section>
 
 <section id="faq" aria-labelledby="faq-heading">
-  <div class="sec-label reveal"><span class="sec-label-line"></span>Q&amp;A</div>
-  <h2 id="faq-heading" class="sec-h reveal">Quick answers</h2>
-  <div class="faq-grid">
-    <div class="faq-item reveal">
-      <h3 class="faq-q">Who is Marc Gigliotti?</h3>
-      <p class="faq-a">That's me, a.k.a. The Product Guy. I'm a product leader and founder with 18+ years across consumer products, fintech, AI and B2B. I've worked at MoneyLion / GEN Digital, Fidelity Investments, CVS Health, Reebok / adidas Group and Kaspersky Lab, and led MoneyLion's consumer product suite to a $1B acquisition by GEN Digital.</p>
-    </div>
-    <div class="faq-item reveal">
-      <h3 class="faq-q">What are you working on now?</h3>
-      <p class="faq-a">I'm VP of Product at MoneyLion / GEN Digital. I also run Joppa Digital, my product advisory and operating practice, and Joppa Product Studio, where I work with founders and investors from 0 to 1, 1 to 10 and 10 to 100. I have room for 1 or 2 more founders or investor-backed startups as a fractional CPO or advisor.</p>
-    </div>
-    <div class="faq-item reveal">
-      <h3 class="faq-q">What have you built?</h3>
-      <p class="faq-a">50+ products, including MoneyLion Discover, Credit Monitoring, Community and Active Investing, and ReebokONE, a platform for 150k+ fitness pros in 20+ countries. At Fidelity I was product lead for FidelityGo and Fidelity Personalized Planning and Advice. Right now I'm building Forsured, Trendsendent and EducatorIQ.</p>
-    </div>
-    <div class="faq-item reveal">
-      <h3 class="faq-q">How can we work together?</h3>
-      <p class="faq-a">Email me at marc@joppadigital.com, find me on LinkedIn at linkedin.com/in/marcgigliotti or use the form below. For product consulting, joppadigital.com has more.</p>
+  <div class="wrap">
+    <h2 id="faq-heading">Quick answers</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3 class="faq-q">Who is Marc Gigliotti?</h3>
+        <p class="faq-a">That's me, a.k.a. The Product Guy. I'm a product leader and founder with 18+ years across consumer products, fintech, AI and B2B. I've worked at MoneyLion / GEN Digital, Fidelity Investments, CVS Health, Reebok / adidas Group and Kaspersky Lab, and led MoneyLion's consumer product suite to a $1B acquisition by GEN Digital.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">What are you working on now?</h3>
+        <p class="faq-a">I'm VP of Product at MoneyLion / GEN Digital. I also run Joppa Digital, my product advisory and operating practice, and Joppa Product Studio, where I work with founders and investors from 0 to 1, 1 to 10 and 10 to 100. I have room for 1 or 2 more founders or investor-backed startups as a fractional CPO or advisor.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">What have you built?</h3>
+        <p class="faq-a">50+ products, including MoneyLion Discover, Credit Monitoring, Community and Active Investing, and ReebokONE, a platform for 150k+ fitness pros in 20+ countries. At Fidelity I was product lead for FidelityGo and Fidelity Personalized Planning and Advice. Right now I'm building Forsured, Trendsendent and EducatorIQ.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">How can we work together?</h3>
+        <p class="faq-a">Email me at marc@joppadigital.com, find me on LinkedIn at linkedin.com/in/marcgigliotti or use the form below. For product consulting, joppadigital.com has more.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="contact">
-  <div class="sec-label reveal"><span class="sec-label-line" style="background:var(--teal-lt);"></span><span style="color:var(--teal-lt);">Contact</span></div>
-  <div class="contact-inner">
-    <div class="reveal">
-      <h2 class="contact-hed">Tell me what<br>you're <em>building.</em></h2>
+  <div class="wrap contact-grid">
+    <div>
+      <h2>Tell me what you're building.</h2>
       <p class="contact-sub">If you're a founder looking for a product partner, a team that needs to move faster or an investor who wants an operator they can trust, I'd love to hear from you.</p>
-      <div class="contact-links">
-        <a href="#" onclick="event.preventDefault();openEmail(biz())" class="clink"><div class="clink-inner"><div class="clink-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="1" y="3" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M1 6l7.5 5L16 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div><div><div class="clink-lbl">Business Email</div><div class="clink-val" id="biz-email"></div></div></div><div class="clink-arr"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>
-        <a href="#" onclick="event.preventDefault();openEmail(personal())" class="clink"><div class="clink-inner"><div class="clink-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="1" y="3" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M1 6l7.5 5L16 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div><div><div class="clink-lbl">Personal Email</div><div class="clink-val" id="personal-email"></div></div></div><div class="clink-arr"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>
-        <a href="https://www.linkedin.com/in/marcgigliotti" target="_blank" class="clink"><div class="clink-inner"><div class="clink-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="1" y="1" width="15" height="15" rx="2.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 7.5v5M5 6v-.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M8 12.5v-2a2 2 0 014 0v2M8 7.5v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div><div><div class="clink-lbl">LinkedIn</div><div class="clink-val">linkedin.com/in/marcgigliotti</div></div></div><div class="clink-arr"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>
-        <a href="https://joppadigital.com" target="_blank" class="clink"><div class="clink-inner"><div class="clink-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="1" y="1" width="15" height="15" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M6 11L11 6M11 6H7.5M11 6V9.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="clink-lbl">Product Consulting</div><div class="clink-val">joppadigital.com</div></div></div><div class="clink-arr"><svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></a>
-      </div>
+      <dl class="contact-list">
+        <dt>Business email</dt><dd><a href="#" id="biz-email" onclick="event.preventDefault();openEmail(biz())"></a></dd>
+        <dt>Personal email</dt><dd><a href="#" id="personal-email" onclick="event.preventDefault();openEmail(personal())"></a></dd>
+        <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/marcgigliotti" target="_blank" rel="noopener">linkedin.com/in/marcgigliotti</a></dd>
+        <dt>Product consulting</dt><dd><a href="https://joppadigital.com" target="_blank" rel="noopener">joppadigital.com</a></dd>
+      </dl>
     </div>
-    <div class="reveal">
-      <div class="contact-form-wrap">
-        <div class="form" id="contactForm">
-          <div class="form-row">
-            <div class="form-g"><label class="form-lbl">Your Name</label><input id="cf-name" type="text" class="form-input" placeholder="Jane Smith"></div>
-            <div class="form-g"><label class="form-lbl">Company</label><input id="cf-company" type="text" class="form-input" placeholder="Acme / Stealth"></div>
-          </div>
-          <div class="form-g"><label class="form-lbl">Email</label><input id="cf-email" type="email" class="form-input" placeholder="jane@company.com"></div>
-          <div class="form-g">
-            <label class="form-lbl">What are you building?</label>
-            <textarea id="cf-message" class="form-input" maxlength="500" placeholder="What's the problem, what stage are you at, and where do you think I can help?" oninput="document.getElementById('cf-count').textContent=this.value.length"></textarea>
-            <div style="text-align:right;font-size:11px;color:rgba(255,255,255,0.3);margin-top:4px;"><span id="cf-count">0</span> / 500</div>
-          </div>
-          <button type="button" class="form-btn" onclick="sendContactForm()">Send message <svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5h11M7 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <p style="margin-top:14px;font-size:12px;color:rgba(255,255,255,0.3);">Or just email me: <a href="#" id="direct-email" onclick="event.preventDefault();openEmail(biz())" style="color:var(--teal-lt);text-decoration:none;"></a></p>
-        </div>
+    <div class="form" id="contactForm">
+      <div class="form-row">
+        <div><label for="cf-name">Your name</label><input id="cf-name" type="text" class="form-input" placeholder="Jane Smith" autocomplete="name"></div>
+        <div><label for="cf-company">Company</label><input id="cf-company" type="text" class="form-input" placeholder="Acme / Stealth" autocomplete="organization"></div>
+      </div>
+      <div><label for="cf-email">Email</label><input id="cf-email" type="email" class="form-input" placeholder="jane@company.com" autocomplete="email"></div>
+      <div>
+        <label for="cf-message">What are you building?</label>
+        <textarea id="cf-message" class="form-input" maxlength="500" placeholder="What's the problem, what stage are you at, and where do you think I can help?" oninput="document.getElementById('cf-count').textContent=this.value.length"></textarea>
+        <span class="form-count"><span id="cf-count">0</span> / 500</span>
+      </div>
+      <div class="form-foot">
+        <button type="button" class="btn" onclick="sendContactForm()">Send message</button>
+        <p class="form-alt">Or just email me: <a href="#" id="direct-email" onclick="event.preventDefault();openEmail(biz())"></a></p>
       </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <a class="foot-logo" href="#">
-    <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12.5" stroke="#1A6B8A" stroke-width="1.2"/><path d="M14 4l1.5 7.5L14 13l-1.5-1.5L14 4z" fill="white"/><path d="M14 24l-1.5-7.5L14 15l1.5 1.5L14 24z" fill="white" opacity="0.35"/><path d="M4 14l7.5-1.5L13 14l-1.5 1.5L4 14z" fill="white"/><path d="M24 14l-7.5 1.5L15 14l1.5-1.5L24 14z" fill="white" opacity="0.35"/><circle cx="14" cy="14" r="2" fill="#1A6B8A"/></svg>
-    <span class="foot-name">Marc J. Gigliotti <span>/ The Product Guy</span></span>
-  </a>
-  <div class="foot-links">
-    <a href="#about">About</a><a href="#work">Work</a><a href="#products">Products</a><a href="#advisory">Advisory</a><a href="#contact">Contact</a>
+  <div class="wrap">
+    <span class="foot-name">Marc J. Gigliotti</span>
+    <div class="foot-links"><a href="#about">About</a><a href="#work">Work</a><a href="#products">Products</a><a href="#advisory">Working together</a><a href="#contact">Contact</a></div>
+    <span>&copy; 2026</span>
   </div>
-  <div class="foot-copy">&copy; 2026</div>
 </footer>
 
 <script>
 // Build emails in JS so Cloudflare can't encode them
 function biz(){return 'marc'+'@'+'joppadigital.com';}
 function personal(){return 'marcgigliotti'+'@'+'gmail.com';}
-// Inject visible email text into placeholders
 document.addEventListener('DOMContentLoaded',function(){
-  var b=document.getElementById('biz-email');
-  var p=document.getElementById('personal-email');
-  var d=document.getElementById('direct-email');
+  var b=document.getElementById('biz-email'), p=document.getElementById('personal-email'), d=document.getElementById('direct-email');
   if(b) b.textContent=biz();
   if(p) p.textContent=personal();
   if(d) d.textContent=biz();
 });
-window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);});
+window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);});
 function openMobileMenu(){document.getElementById('mobileMenu').classList.add('open');}
 function closeMobileMenu(){document.getElementById('mobileMenu').classList.remove('open');}
-// Email helper, opens Gmail compose directly
-function openEmail(to, subject, body) {
-  const url = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(to)
-    + (subject ? '&su=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body||'') : '');
-  window.open(url, '_blank');
+// Opens Gmail compose with the address (and the form fields, if given)
+function openEmail(to, subject, body){
+  var url='https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(to)
+    +(subject?'&su='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body||''):'');
+  window.open(url,'_blank');
 }
-// Contact form, opens mail client with all fields pre-filled
 function sendContactForm(){
-  const name    = (document.getElementById('cf-name').value    || '').trim();
-  const company = (document.getElementById('cf-company').value || '').trim();
-  const email   = (document.getElementById('cf-email').value   || '').trim();
-  const message = (document.getElementById('cf-message').value || '').trim();
-  if(!name || !email || !message){ alert('Just need your name, email and a quick message.'); return; }
-  const subject = 'New inquiry from ' + name + (company ? ' (' + company + ')' : '');
-  const body    = 'Name: ' + name + '\nCompany: ' + (company || 'n/a') + '\nEmail: ' + email + '\n\n' + message;
-  openEmail('marc@joppadigital.com', subject, body);
+  var name=(document.getElementById('cf-name').value||'').trim();
+  var company=(document.getElementById('cf-company').value||'').trim();
+  var email=(document.getElementById('cf-email').value||'').trim();
+  var message=(document.getElementById('cf-message').value||'').trim();
+  if(!name||!email||!message){alert('Just need your name, email and a quick message.');return;}
+  var subject='New inquiry from '+name+(company?' ('+company+')':'');
+  var body='Name: '+name+'\nCompany: '+(company||'n/a')+'\nEmail: '+email+'\n\n'+message;
+  openEmail('marc@joppadigital.com',subject,body);
 }
-const revEls=document.querySelectorAll('.reveal');
-const rObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      const peers=[...e.target.parentElement.children].filter(c=>c.classList.contains('reveal'));
-      const idx=peers.indexOf(e.target);
-      setTimeout(()=>e.target.classList.add('in'),idx*90);
-      rObs.unobserve(e.target);
-    }
-  });
-},{threshold:0.07});
-revEls.forEach(el=>rObs.observe(el));
 </script>
 </body>
 </html>

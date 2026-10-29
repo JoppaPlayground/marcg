@@ -20,4 +20,6 @@ Only stop and ask him when a change adds a fact about him that can't be verified
 - No em dashes. No "not just X", "intersection of", "Whether X or Y", "AI-powered", "transforming", "seasoned", "curated".
 - Specific numbers, consistent across sections. Plain words over acronyms.
 - The Q&A on the page and the FAQPage data in the head match word for word. llms.txt keeps the fuller third-person version.
-- Keep the nautical design. Skip decoration that looks generated (twinkles, sweeps, constellations, tilted chips).
+- Keep the nautical design (navy, teal, the compass and the waves) with Lora for headings and Plus Jakarta Sans for text.
+- Skip what makes a site look generated: ALL-CAPS labels above headings, one word in a headline set in another color, big-number-small-label stat blocks, fade-in on scroll, icon cards with status dots, arrows on links, hover lifts, gradient washes, middle-dot meta strings.
+- Links use real destinations as their text (moneylion.com, Fast Company), underlined.
